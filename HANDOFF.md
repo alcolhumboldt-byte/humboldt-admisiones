@@ -64,9 +64,16 @@ Nota: el nav lista 5 secciones y colapsa a hamburguesa por debajo de 1020px. Al 
 4. Laboratorios: reemplazar los 3 bloques `.lab-out` con proyecto real + grado + año. **Sin esto la sección pierde toda su fuerza.**
 5. FAQ: costos, cupos, documentos de matrícula, ingreso a mitad de año.
 6. Footer: dirección real, correo real, horario real.
-7. Instalaciones: confirmar **año y categoría** del campeonato de fútbol de salón (`.logro`). Un "somos campeones" sin fecha se lee como relleno; con año y categoría es prueba.
+7. ~~Instalaciones: año y categoría del campeonato.~~ Resuelto: el bloque `.logro` ya no cuelga de un campeonato sin fecha. Ahora nombra los logros que dio el colegio: pruebas ICFES, Olimpiadas Matemáticas y seis disciplinas deportivas.
 8. Instalaciones: preguntar al colegio qué escenarios deportivos tienen (cancha, coliseo, polideportivo) — hay equipo campeón pero el espacio no está listado porque nadie lo confirmó. Tampoco se inventó.
 9. ~~Logo y colores oficiales del colegio.~~ Hecho: paleta tomada del logo oficial, familia índigo/morado. Los tokens vigentes son `--tinta` #211C6C, `--morado` #6D68B0 y `--lavanda` #B7B3E3 (los nombres viejos `--verde` y `--marigold` ya no existen). Falta insertar el logo real como imagen: hoy en el nav y el footer solo está el nombre en texto.
+
+### Abiertos por el contenido nuevo
+- **Nombre del colegio.** La página dice "Colegio Alejandro **de** Humboldt"; el texto que entregó el colegio lo escribe cuatro veces como "Colegio Alejandro Humboldt", sin el "de". Confirmar cuál es el nombre oficial. Aparece en el `<title>`, el nav, el footer y la meta description.
+- **Cómo se reserva el cupo de verdad.** Los botones dicen "Reserva tu cupo" y hoy todos abren WhatsApp. El texto del colegio describe un formulario de admisión propio. Si ese formulario existe, decidir si el botón lleva allí en vez de a WhatsApp.
+- **Nombre de los laboratorios.** El HANDOFF fijó "Laboratorios de Investigación y Desarrollo"; el colegio los llama "Laboratorios de Química e Innovación". Hoy la sección usa el segundo en el cuerpo pero conserva el posicionamiento del primero. Unificar.
+- **Confirmar el "6"** de disciplinas deportivas en la banda de cifras. El colegio escribió "incluyendo", así que pueden ser más.
+- Faltan dos cifras reales para esa banda si se quieren números: años de trayectoria y número de estudiantes.
 
 ### Después del lanzamiento
 - Backend del formulario: tabla en Supabase (`nombre`, `tel`, `grado`, `created_at`) + notificación.
@@ -81,6 +88,6 @@ Nota: el nav lista 5 secciones y colapsa a hamburguesa por debajo de 1020px. Al 
 - Sin CMS. El contenido se edita directo en el HTML.
 
 ## Advertencias
-- El tercer pilar (`#formacion`, bloque 03) menciona acompañamiento espiritual. Confirmar con el colegio cómo quieren nombrar ese eje antes de publicar.
+- ~~Nombre del tercer pilar.~~ Resuelto: el colegio lo llama **Formación en valores cristianos**. Así quedó en la página.
 - Definir quién responde el WhatsApp y en qué horario **antes** de lanzar. Un lead sin respuesta en menos de 5 minutos se enfría; sin eso la página no sirve.
 - Nada de lo que está en `[ ... ]` puede salir a producción.

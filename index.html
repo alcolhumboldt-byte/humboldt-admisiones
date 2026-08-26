@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colegio Alejandro de Humboldt | Admisiones</title>
-<meta name="description" content="Matricula a tu hijo/a en el Colegio Alejandro de Humboldt. Formación académica, laboratorios de investigación y desarrollo, y acompañamiento integral.">
+<meta name="description" content="Admisiones abiertas desde Prejardín hasta grado 11. Formación en valores cristianos, excelencia académica y Laboratorios de Química e Innovación. Reserva el cupo de tu hijo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -97,7 +97,7 @@
     font-family:var(--display);font-weight:800;
     text-transform:uppercase;letter-spacing:-.015em;line-height:.94;
   }
-  h1{font-size:clamp(2.6rem, 6.4vw, 5.75rem);}
+  h1{font-size:clamp(2.35rem, 4.75vw, 4.05rem);}
   h2{font-size:clamp(2.1rem, 5vw, 4.25rem);}
   h3{font-size:clamp(1.25rem, 2vw, 1.65rem);line-height:1.02;}
   h4{font-size:1.05rem;line-height:1.1;}
@@ -169,6 +169,7 @@
   .marca{
     font-family:var(--display);font-weight:800;font-size:.95rem;
     text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;color:var(--marca-txt);
+    white-space:nowrap;
   }
   .marca-corta{display:none;}
   @media (max-width:620px){
@@ -192,7 +193,7 @@
   .nav-toggle span::before{position:absolute;top:-7px;}
   .nav-toggle span::after{position:absolute;top:7px;}
 
-  @media (max-width:1020px){
+  @media (max-width:1140px){
     .nav-links{
       position:fixed;inset:70px 22px auto 22px;
       background:var(--papel);border:1px solid var(--linea);
@@ -217,7 +218,7 @@
   }
   .hero .wrap{position:relative;z-index:1;padding-top:96px;padding-bottom:76px;width:100%;}
   .hero .rotulo{color:var(--lavanda);}
-  .hero h1{color:#FFFFFF;max-width:19ch;margin-bottom:26px;}
+  .hero h1{color:#FFFFFF;max-width:30ch;margin-bottom:26px;}
   .hero h1 em{font-style:normal;color:var(--lavanda);}
   .hero .prosa-lg{color:rgba(255,255,255,.86);max-width:52ch;margin-bottom:34px;}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
@@ -277,6 +278,11 @@
   }
   .pilar h3{margin:22px 0 12px;color:var(--marca-txt);}
   .pilar .prosa{font-size:1rem;}
+  /* Variante a nivel de sección: mismo lenguaje visual, escala legible. */
+  .aviso-seccion{
+    margin-top:44px;font-size:.95rem;padding:18px 20px;max-width:70ch;
+  }
+  .aviso-seccion strong{font-weight:600;}
   .aviso{
     margin-top:16px;font-size:.8rem;line-height:1.55;
     color:var(--advertencia);background:var(--advertencia-bg);
@@ -544,7 +550,7 @@
       <li><a href="#admision">Admisión</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#" class="btn btn-solido btn-sm wa" data-msg="Hola, quiero información sobre el proceso de admisión.">Escríbenos</a>
+      <a href="#" class="btn btn-solido btn-sm wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">Reserva tu cupo</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -560,13 +566,13 @@
          width="2400" height="1400" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap">
-    <span class="rotulo">Admisiones abiertas</span>
-    <h1>No solo estudian. <em>Construyen.</em></h1>
-    <p class="prosa-lg">De Preescolar a Bachillerato. Los proyectos que diseñan nuestros estudiantes se implementan de verdad en el colegio.</p>
+    <span class="rotulo">Admisión abierta</span>
+    <h1>Valores que forman. <em>Conocimiento que transforma.</em></h1>
+    <p class="prosa-lg">Admisiones abiertas desde Prejardín hasta grado 11. Acompañamos a cada familia durante todo el proceso.</p>
     <div class="hero-ctas">
-      <a href="#" class="btn btn-claro wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio.">
+      <a href="#" class="btn btn-claro wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
-        Escríbenos
+        Reserva tu cupo
       </a>
       <a href="#niveles" class="btn btn-claro" style="background:transparent;border-color:rgba(255,255,255,.75);color:#FFFFFF;">Ver niveles</a>
     </div>
@@ -577,16 +583,19 @@
 <section class="cifras">
   <div class="wrap cascada">
     <div class="cifra rv">
-      <b>[ ... ]</b>
-      <span>años de experiencia educativa</span>
+      <b>Prejardín a 11°</b>
+      <span>Todos los niveles en un solo colegio</span>
     </div>
     <div class="cifra rv">
-      <b>[ ... ]</b>
-      <span>estudiantes activos</span>
+      <b>ICFES</b>
+      <span>Estudiantes destacados en las pruebas de Estado</span>
     </div>
+    <!-- El 6 sale de los deportes que nombró el colegio: fútbol de salón,
+         voleibol, baloncesto, ajedrez, tenis de mesa y natación. Dijeron
+         "incluyendo", así que pueden ser más: confirmar antes de publicar. -->
     <div class="cifra rv">
-      <b>[ ... ]</b>
-      <span>proyectos implementados en el colegio</span>
+      <b>6</b>
+      <span>Disciplinas deportivas con representación</span>
     </div>
   </div>
 </section>
@@ -607,8 +616,8 @@
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">01</span>
         </div>
-        <h3>Investigación y desarrollo</h3>
-        <p class="prosa">No solo estudian ciencia y tecnología: las aplican para resolver problemas reales del colegio.</p>
+        <h3>Ciencia, investigación e innovación</h3>
+        <p class="prosa">Laboratorios de Química e Innovación, robótica y tecnología. No solo estudian ciencia: la aplican.</p>
       </div>
 
       <div class="pilar rv">
@@ -618,8 +627,8 @@
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">02</span>
         </div>
-        <h3>Rigor académico</h3>
-        <p class="prosa">Plan de estudios exigente, con seguimiento personalizado a cada estudiante.</p>
+        <h3>Excelencia académica</h3>
+        <p class="prosa">Plan exigente y seguimiento personalizado. Nuestros estudiantes se destacan en pruebas ICFES y Olimpiadas Matemáticas.</p>
       </div>
 
       <div class="pilar rv">
@@ -629,9 +638,8 @@
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">03</span>
         </div>
-        <h3>[ ... nombre del eje, confirmar con el colegio ]</h3>
-        <p class="prosa">Acompañamiento en valores y formación del carácter.</p>
-        <p class="aviso">Pendiente: confirmar con el colegio cómo quieren nombrar este eje (¿formación espiritual? ¿formación en valores? ¿identidad y carácter?) antes de publicar.</p>
+        <h3>Formación en valores cristianos</h3>
+        <p class="prosa">Acompañamiento en el carácter, dentro de un ambiente escolar positivo.</p>
       </div>
     </div>
   </div>
@@ -642,17 +650,17 @@
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Un nivel para cada etapa</h2>
-      <p class="prosa">Escríbenos por el nivel que te interesa y te contamos cupos, horarios y proceso.</p>
+      <p class="prosa">Hay cupos disponibles en todos los niveles. Escríbenos por el que te interesa y te contamos requisitos, documentos y costos.</p>
     </div>
 
     <div class="niveles">
       <div class="nivel rv">
         <div class="nivel-txt">
           <h3>Preescolar</h3>
-          <span class="rango">Prejardín a Transición</span>
+          <span class="rango">Prejardín, Jardín y Transición</span>
           <p class="prosa">Exploración, lenguaje y desarrollo socioemocional.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Preescolar (Prejardín a Transición).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Preescolar (Prejardín, Jardín y Transición).">Preguntar</a>
       </div>
       <div class="nivel rv">
         <div class="nivel-txt">
@@ -664,19 +672,19 @@
       </div>
       <div class="nivel rv">
         <div class="nivel-txt">
-          <h3>Bachillerato</h3>
+          <h3>Secundaria</h3>
           <span class="rango">6° a 9° grado</span>
           <p class="prosa">Profundización académica y proyectos de investigación en el colegio.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Bachillerato (6° a 9° grado).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Secundaria (6° a 9° grado).">Preguntar</a>
       </div>
       <div class="nivel rv">
         <div class="nivel-txt">
           <h3>Media</h3>
-          <span class="rango">10° a 11° grado</span>
+          <span class="rango">10° y 11° grado</span>
           <p class="prosa">Preparación universitaria y liderazgo de proyectos de I+D.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Media (10° a 11° grado).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Media (10° y 11° grado).">Preguntar</a>
       </div>
     </div>
   </div>
@@ -690,7 +698,7 @@
            El resto de secciones se sostienen solo con el titular. -->
       <span class="rotulo">Lo que nos diferencia</span>
       <h2 class="labs-decl">Aquí la tecnología no se <em>estudia</em>: se implementa.</h2>
-      <p class="prosa-lg">No es una clase de sistemas. Los estudiantes aprenden un método de investigación y construyen lo que el colegio necesita: se prueba, se presenta y se implementa.</p>
+      <p class="prosa-lg">Química, robótica y tecnología con un método de investigación detrás. Los estudiantes formulan un problema, construyen una solución y la sustentan.</p>
     </div>
 
     <div class="labs-grid cascada">
@@ -715,9 +723,9 @@
     </div>
 
     <div class="labs-cta rv">
-      <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero conocer los Laboratorios de Investigación y Desarrollo del colegio.">
+      <a href="#" class="btn btn-solido wa" data-msg="Hola, vi los Laboratorios de Química e Innovación y quiero reservar un cupo.">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
-        Escríbenos
+        Reserva tu cupo
       </a>
     </div>
   </div>
@@ -734,24 +742,26 @@
       <div class="oferta-col">
         <h3>Espacios</h3>
         <ul class="lista-rayada">
-          <li>Laboratorio de química</li>
-          <li>Aula de música</li>
-          <li>Biblioteca</li>
-          <li>Sala de informática</li>
+          <li>Laboratorios de Química e Innovación</li>
+          <li>Sala de sistemas</li>
+          <li>Biblioteca y aula múltiple</li>
+          <li>Música y espacios especializados</li>
         </ul>
       </div>
 
       <div class="oferta-col">
         <h3>Programas</h3>
         <ul class="lista-rayada">
-          <li>Inglés</li>
-          <li>Deportes</li>
+          <li>Deportes y extracurriculares</li>
+          <li>Robótica y tecnología</li>
+          <li>Caminatas al aire libre</li>
+          <li>Proyectos artísticos y culturales</li>
         </ul>
 
         <div class="logro">
-          <span class="etiqueta">Logro reciente</span>
-          <p>Campeones del intercurso de fútbol de salón</p>
-          <div class="pendiente">Pendiente: año y categoría, [ ... ]</div>
+          <span class="etiqueta">Dónde se nota</span>
+          <p>Pruebas ICFES, Olimpiadas Matemáticas y seis disciplinas deportivas</p>
+          <div class="pendiente">Fútbol de salón, voleibol, baloncesto, ajedrez, tenis de mesa y natación.</div>
         </div>
       </div>
     </div>
@@ -783,25 +793,30 @@
     <div class="pasos cascada">
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">01</span>
-        <h3>Primer contacto</h3>
-        <p class="prosa">Escríbenos por WhatsApp. Te enviamos la información y agendamos una visita.</p>
+        <h3>Consulta la información</h3>
+        <p class="prosa">Requisitos, documentos, costos y condiciones del grado al que quieres ingresar.</p>
       </div>
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">02</span>
-        <h3>Visita y entrevista</h3>
-        <p class="prosa">Conoces las instalaciones. Hacemos una entrevista y una valoración con el estudiante.</p>
+        <h3>Inicia el proceso</h3>
+        <p class="prosa">Diligencias el formulario y presentas la documentación solicitada.</p>
       </div>
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">03</span>
-        <h3>Documentación</h3>
-        <p class="prosa">Entregas los documentos para formalizar el cupo. Te acompañamos en el trámite.</p>
+        <h3>Proceso del grado</h3>
+        <p class="prosa">Cada grado tiene su propio proceso. Nuestro equipo te acompaña en cada etapa.</p>
       </div>
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">04</span>
-        <h3>Matrícula y bienvenida</h3>
-        <p class="prosa">Confirmas la matrícula y coordinamos uniformes, materiales y el primer día.</p>
+        <h3>Reserva el cupo</h3>
+        <p class="prosa">Cumplidos los requisitos, avanzas a la reserva de cupo y la matrícula.</p>
       </div>
     </div>
+
+    <p class="aviso aviso-seccion rv">
+      <strong>Grados 9°, 10° y 11°:</strong> el ingreso a estos grados tiene requisitos y
+      condiciones específicas. Consúltalos con admisiones antes de iniciar el proceso.
+    </p>
   </div>
 </section>
 
@@ -813,7 +828,7 @@
         <span class="rotulo">Contacto</span>
         <h2>Hablemos de tu proceso de admisión</h2>
         <p class="prosa">Lo más rápido es WhatsApp. Fuera de horario, déjanos tus datos y te contactamos apenas abramos.</p>
-        <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio.">
+        <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
           Escríbenos
         </a>
@@ -841,9 +856,9 @@
             <label for="f-grado">Grado de interés</label>
             <select id="f-grado" name="grado" required>
               <option value="">Selecciona un nivel</option>
-              <option>Preescolar (Prejardín a Transición)</option>
+              <option>Preescolar (Prejardín, Jardín y Transición)</option>
               <option>Primaria (1° a 5°)</option>
-              <option>Bachillerato (6° a 9°)</option>
+              <option>Secundaria (6° a 9°)</option>
               <option>Media (10° a 11°)</option>
             </select>
             <span class="error">Selecciona un nivel.</span>
@@ -866,11 +881,15 @@
     <div class="faq-lista rv">
       <details>
         <summary>¿Cuál es el valor de la matrícula y la pensión?</summary>
-        <p class="prosa"><span class="pend">[ ... ]</span> Completar con los valores vigentes del año escolar antes de publicar.</p>
+        <p class="prosa"><span class="pend">[ ... ]</span> Completar con los valores vigentes de matrícula y pensión por grado.</p>
       </details>
       <details>
         <summary>¿Hay cupos disponibles?</summary>
-        <p class="prosa"><span class="pend">[ ... ]</span> Indicar disponibilidad real por nivel o grado.</p>
+        <p class="prosa">Sí. Hay cupos disponibles desde Prejardín hasta grado 11. Escríbenos por el grado que te interesa y te confirmamos la disponibilidad al día.</p>
+      </details>
+      <details>
+        <summary>¿Qué requisitos hay para entrar a 9°, 10° u 11°?</summary>
+        <p class="prosa"><span class="pend">[ ... ]</span> Detallar los requisitos y condiciones específicas de estos tres grados.</p>
       </details>
       <details>
         <summary>¿Qué documentos necesito para matricular?</summary>
@@ -890,7 +909,7 @@
     <div class="foot-grid">
       <div>
         <span class="foot-marca">Colegio Alejandro de Humboldt</span>
-        <p>[ ... breve descripción institucional / eslogan del colegio ]</p>
+        <p>Valores que forman, conocimiento que transforma y talentos que inspiran.</p>
       </div>
       <div>
         <h4>Contacto</h4>
@@ -917,7 +936,7 @@
   </div>
 </footer>
 
-<a href="#" class="wa-flotante wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio." aria-label="Escríbenos por WhatsApp">
+<a href="#" class="wa-flotante wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?" aria-label="Reserva tu cupo por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
 </a>
 
