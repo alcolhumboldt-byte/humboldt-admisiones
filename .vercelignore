@@ -1,0 +1,10 @@
+# Vercel CLI sube el directorio local y NO respeta .gitignore de forma fiable.
+# Este archivo es el que de verdad decide qué sale a producción.
+# Material en bruto del teléfono: son menores identificables. Nunca se publica.
+.DS_Store
+*.mov
+*.MOV
+*.mp4
+*.MP4
+*.heic
+*.HEIC
