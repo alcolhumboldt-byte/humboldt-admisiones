@@ -1,0 +1,17 @@
+# Ruido de macOS
+.DS_Store
+
+# Material en bruto del colegio: videos y HEIC salidos del teléfono.
+# NO se versionan ni se despliegan, por tres razones:
+#  1. Privacidad: son menores identificables. En el repo o en Vercel quedarían
+#     en una URL pública indexable, aunque la página no los muestre.
+#  2. Peso: ~137 MB. GitHub avisa por archivo de más de 50 MB.
+#  3. No se usan: la página no tiene reproductor de video y HEIC no lo abren
+#     Chrome ni Firefox.
+# Las fotos finales van como fotos/NN-nombre.jpg y esas SÍ se versionan.
+*.mov
+*.MOV
+*.mp4
+*.MP4
+*.heic
+*.HEIC

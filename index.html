@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colegio Alejandro de Humboldt | Admisiones</title>
+<meta name="description" content="Matricula a tu hijo/a en el Colegio Alejandro de Humboldt. Formación académica, laboratorios de investigación y desarrollo, y acompañamiento integral.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Índigo del logo oficial. Cumple el rol que el granate cumple en la
+       referencia: color de marca dominante, no acento diluido. */
+    --tinta: #211C6C;
+    --tinta-hover: #171248;
+    /* Marca sobre papel. En claro es el mismo índigo; en oscuro tiene que
+       aclararse o queda índigo casi negro sobre fondo casi negro. */
+    --marca-txt: #211C6C;
+    --morado: #6D68B0;
+    --lavanda: #B7B3E3;
+
+    /* Fondos: blanco roto y gris papel. Nunca #fff ni #000 puros. */
+    --papel: #FCFCFB;
+    --papel-alt: #F2F2EF;
+    --linea: #DEDDD8;
+    --sobre-tinta: rgba(255,255,255,.74);
+
+    --texto: #1A1A20;
+    --texto-suave: #55555F;
+    --texto-tenue: #7E7E88;
+
+    --advertencia: #8A5D12;
+    --advertencia-bg: #FAF2E2;
+    --exito: #2F7A4D;
+    --exito-bg: #E9F5EE;
+    --error: #A5384F;
+
+    --display: 'Archivo', system-ui, -apple-system, sans-serif;
+    --texto-fam: 'Source Sans 3', system-ui, -apple-system, sans-serif;
+
+    --contenedor: 1320px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Modo oscuro: se conmutan los tokens de papel y texto. La marca no se
+     desatura, el índigo tiene que seguir siendo reconocible de noche. */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --papel: #131319;
+      --papel-alt: #1B1B22;
+      --linea: #32323C;
+      --texto: #F2F2F0;
+      --texto-suave: #B4B4BE;
+      --texto-tenue: #8A8A96;
+      --tinta: #2E278C;
+      --tinta-hover: #3A32A8;
+      --marca-txt: #B9B4EE;
+      --morado: #9A95D8;
+      --lavanda: #C6C2EC;
+      --advertencia: #E5BE79;
+      --advertencia-bg: #2E2618;
+      --exito: #7FCB9F;
+      --exito-bg: #16281D;
+      --error: #E8899C;
+    }
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    font-family:var(--texto-fam);
+    background:var(--papel);
+    color:var(--texto);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  .wrap{max-width:var(--contenedor);margin:0 auto;padding:0 40px;}
+  @media (max-width:860px){ .wrap{padding:0 22px;} }
+
+  section{padding:110px 0;}
+  @media (max-width:860px){ section{padding:72px 0;} }
+
+  /* ---------- TIPOGRAFÍA ----------
+     Grotesca pesada en versalitas, interlineado casi 1 y tracking negativo:
+     la métrica del sitio de referencia. La jerarquía la carga el tipo. */
+  h1,h2,h3,h4{
+    font-family:var(--display);font-weight:800;
+    text-transform:uppercase;letter-spacing:-.015em;line-height:.94;
+  }
+  h1{font-size:clamp(2.6rem, 6.4vw, 5.75rem);}
+  h2{font-size:clamp(2.1rem, 5vw, 4.25rem);}
+  h3{font-size:clamp(1.25rem, 2vw, 1.65rem);line-height:1.02;}
+  h4{font-size:1.05rem;line-height:1.1;}
+
+  .prosa{font-size:1.0625rem;line-height:1.65;color:var(--texto-suave);}
+  .prosa-lg{font-size:1.2rem;line-height:1.55;color:var(--texto-suave);}
+
+  /* Rótulo: versalita estrecha en color de marca, encima del titular.
+     Presupuesto estricto, ver comentario en la sección de laboratorios. */
+  .rotulo{
+    font-family:var(--display);font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--marca-txt);
+    display:block;margin-bottom:18px;
+  }
+
+  /* ---------- BOTONES ----------
+     Rectangulares, versalitas espaciadas, con galón. Un solo sistema de
+     esquinas en toda la página: radio 0. */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:11px;
+    padding:16px 26px;border-radius:0;white-space:nowrap;
+    font-family:var(--display);font-weight:700;font-size:.8rem;
+    text-transform:uppercase;letter-spacing:.11em;
+    cursor:pointer;border:1px solid transparent;
+    transition:transform 160ms var(--ease-out), background 200ms var(--ease),
+               border-color 200ms var(--ease), color 200ms var(--ease);
+  }
+  .btn:active{transform:scale(.975);}
+  .btn-solido{background:var(--tinta);color:#FFFFFF;}
+  .btn-linea{background:transparent;border-color:var(--texto);color:var(--texto);}
+  /* Sobre campo índigo y sobre foto: fondo claro sólido, nunca botón
+     translúcido, el texto tiene que pasar contraste sobre cualquier píxel. */
+  .btn-claro{background:#FCFCFB;color:#211C6C;}
+  .btn-sm{padding:12px 18px;font-size:.72rem;}
+  .btn svg{width:15px;height:15px;flex-shrink:0;}
+
+  @media (hover: hover) and (pointer: fine){
+    .btn-solido:hover{background:var(--tinta-hover);}
+    .btn-linea:hover{background:var(--texto);color:var(--papel);}
+    .btn-claro:hover{background:var(--lavanda);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .btn{transition:background 200ms var(--ease), border-color 200ms var(--ease), color 200ms var(--ease);}
+    .btn:active{transform:none;}
+  }
+
+  /* ---------- REVEAL ---------- */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity 620ms var(--ease-out), transform 620ms var(--ease-out);}
+  .rv.rv-visible{opacity:1;transform:none;}
+  .cascada > .rv:nth-child(2){transition-delay:.07s;}
+  .cascada > .rv:nth-child(3){transition-delay:.14s;}
+  .cascada > .rv:nth-child(4){transition-delay:.21s;}
+  @media (prefers-reduced-motion: reduce){
+    .rv{transform:none;transition:opacity 300ms var(--ease);}
+    .cascada > .rv:nth-child(n){transition-delay:0ms;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:100;
+    background:color-mix(in srgb, var(--papel) 92%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color 200ms var(--ease);
+  }
+  .nav.scrolled{border-bottom-color:var(--linea);}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:15px;padding-bottom:15px;}
+
+  .marca{
+    font-family:var(--display);font-weight:800;font-size:.95rem;
+    text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;color:var(--marca-txt);
+  }
+  .marca-corta{display:none;}
+  @media (max-width:620px){
+    .marca-larga{display:none;}
+    .marca-corta{display:inline;}
+  }
+
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{
+    font-family:var(--display);font-size:.74rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--texto-suave);
+    transition:color 150ms var(--ease);
+  }
+  @media (hover: hover) and (pointer: fine){ .nav-links a:hover{color:var(--marca-txt);} }
+  .nav-cta{display:flex;align-items:center;gap:12px;}
+
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;align-items:center;justify-content:center;}
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+    content:"";display:block;width:22px;height:2px;background:var(--texto);position:relative;
+  }
+  .nav-toggle span::before{position:absolute;top:-7px;}
+  .nav-toggle span::after{position:absolute;top:7px;}
+
+  @media (max-width:1020px){
+    .nav-links{
+      position:fixed;inset:70px 22px auto 22px;
+      background:var(--papel);border:1px solid var(--linea);
+      padding:26px;flex-direction:column;align-items:flex-start;gap:22px;
+      transform:translateY(-10px);opacity:0;pointer-events:none;
+      transition:transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
+    }
+    body.nav-open .nav-links{transform:none;opacity:1;pointer-events:auto;}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ---------- HERO ----------
+     Fotografía a sangre de borde a borde con el titular encima, como en la
+     referencia. El degradado no es decorativo: garantiza contraste del texto
+     sobre cualquier fotografía que entre después. */
+  .hero{position:relative;min-height:min(86dvh, 780px);display:flex;align-items:flex-end;padding:0;overflow:hidden;}
+  .hero-foto{position:absolute;inset:0;z-index:0;}
+  .hero-foto img{width:100%;height:100%;object-fit:cover;}
+  .hero-foto::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(12,10,32,.88) 0%, rgba(12,10,32,.62) 42%, rgba(12,10,32,.28) 100%);
+  }
+  .hero .wrap{position:relative;z-index:1;padding-top:96px;padding-bottom:76px;width:100%;}
+  .hero .rotulo{color:var(--lavanda);}
+  .hero h1{color:#FFFFFF;max-width:19ch;margin-bottom:26px;}
+  .hero h1 em{font-style:normal;color:var(--lavanda);}
+  .hero .prosa-lg{color:rgba(255,255,255,.86);max-width:52ch;margin-bottom:34px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  @media (max-width:860px){
+    .hero{min-height:auto;}
+    .hero .wrap{padding-top:80px;padding-bottom:56px;}
+  }
+
+  /* ---------- CIFRAS ---------- */
+  .cifras{background:var(--tinta);color:#FFFFFF;padding:0;}
+  .cifras .wrap{display:grid;grid-template-columns:repeat(3,1fr);}
+  .cifra{padding:52px 34px 52px 0;}
+  .cifra + .cifra{border-left:1px solid rgba(255,255,255,.2);padding-left:34px;}
+  .cifra b{
+    font-family:var(--display);display:block;
+    font-size:clamp(2.5rem,4.6vw,3.75rem);font-weight:800;
+    letter-spacing:-.02em;line-height:1;margin-bottom:12px;
+  }
+  .cifra span{font-size:.92rem;line-height:1.45;display:block;max-width:24ch;color:var(--sobre-tinta);}
+  @media (max-width:760px){
+    .cifras .wrap{grid-template-columns:1fr;}
+    .cifra{padding:30px 0;}
+    .cifra + .cifra{border-left:0;border-top:1px solid rgba(255,255,255,.2);padding-left:0;}
+  }
+
+  /* ---------- ENCABEZADO DE SECCIÓN ----------
+     Titular apilado sobre su texto de apoyo. Nada de párrafo pequeño flotando
+     en la esquina derecha del encabezado. */
+  .sec-head{margin-bottom:60px;max-width:900px;}
+  .sec-head h2{max-width:17ch;}
+  .sec-head .prosa{max-width:58ch;margin-top:22px;}
+  @media (max-width:860px){ .sec-head{margin-bottom:42px;} }
+
+  /* ---------- FORMACIÓN, tarjetas fotográficas con numeral calado ----------
+     Rejilla asimétrica: el pilar de I+D es el diferenciador y ocupa el campo
+     ancho. Evita la fila de tres tarjetas idénticas. */
+  .pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .pilar{display:flex;flex-direction:column;}
+  .pilar-ancho{grid-column:span 2;}
+  .pilar-figura{position:relative;overflow:hidden;background:var(--papel-alt);aspect-ratio:4/3;}
+  .pilar-ancho .pilar-figura{aspect-ratio:16/9;}
+  .pilar-figura img{width:100%;height:100%;object-fit:cover;transition:transform 700ms var(--ease-out);}
+  @media (hover: hover) and (pointer: fine){
+    .pilar:hover .pilar-figura img{transform:scale(1.045);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .pilar-figura img{transition:none;}
+    .pilar:hover .pilar-figura img{transform:none;}
+  }
+  /* Numeral calado sobre la foto, como en la rejilla de valores de la
+     referencia. Lleva sombra de texto para no depender del brillo de la foto. */
+  .pilar-figura .numeral{
+    position:absolute;left:22px;bottom:14px;
+    font-family:var(--display);font-weight:800;font-size:4.25rem;line-height:1;
+    color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.92);
+    letter-spacing:-.02em;text-shadow:0 2px 18px rgba(0,0,0,.45);
+  }
+  .pilar h3{margin:22px 0 12px;color:var(--marca-txt);}
+  .pilar .prosa{font-size:1rem;}
+  .aviso{
+    margin-top:16px;font-size:.8rem;line-height:1.55;
+    color:var(--advertencia);background:var(--advertencia-bg);
+    border-left:3px solid var(--advertencia);padding:12px 14px;
+  }
+  @media (max-width:960px){
+    .pilares{grid-template-columns:1fr;gap:44px;}
+    .pilar-ancho{grid-column:span 1;}
+    .pilar-ancho .pilar-figura{aspect-ratio:4/3;}
+  }
+
+  /* ---------- NIVELES, lista editorial con reglas ---------- */
+  .niveles{border-top:1px solid var(--linea);}
+  .nivel{
+    display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+    padding:34px 0;border-bottom:1px solid var(--linea);
+    transition:background 220ms var(--ease);
+  }
+  @media (hover: hover) and (pointer: fine){
+    .nivel:hover{background:var(--papel-alt);}
+  }
+  .nivel-txt{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 22px;}
+  .nivel h3{color:var(--marca-txt);}
+  .nivel .rango{
+    font-family:var(--display);font-size:.76rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.12em;color:var(--texto-tenue);
+  }
+  .nivel .prosa{font-size:.98rem;flex-basis:100%;max-width:58ch;margin-top:2px;}
+  @media (max-width:700px){
+    .nivel{grid-template-columns:1fr;gap:18px;align-items:start;padding:28px 0;}
+    .nivel .btn{justify-self:start;}
+  }
+
+  /* ---------- LABORATORIOS, declaración grande + campo índigo ---------- */
+  .labs{background:var(--papel-alt);}
+  .labs-decl{max-width:20ch;margin-bottom:26px;}
+  .labs-decl em{font-style:normal;color:var(--marca-txt);}
+  .labs .prosa-lg{max-width:60ch;}
+
+  .labs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.2);margin-top:72px;}
+  .lab-out{background:var(--tinta);color:#FFFFFF;padding:38px 32px;}
+  .lab-out .etiqueta{
+    font-family:var(--display);font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;
+    color:var(--lavanda);display:block;margin-bottom:18px;
+  }
+  .lab-out h4{margin-bottom:12px;}
+  .lab-out p{font-size:.95rem;color:var(--sobre-tinta);line-height:1.6;}
+  .lab-out .pendiente{
+    margin-top:20px;font-size:.8rem;color:var(--lavanda);
+    border-left:3px solid var(--morado);padding:10px 12px;
+    background:rgba(255,255,255,.07);
+  }
+  .labs-cta{margin-top:40px;}
+  @media (max-width:900px){
+    .labs-grid{grid-template-columns:1fr;margin-top:52px;}
+  }
+
+  /* ---------- MOSAICO DE INSTALACIONES ----------
+     Rejilla a sangre completa. Filas de distinta altura para que el mosaico
+     tenga ritmo y no sea una cuadrícula plana de miniaturas iguales. */
+  /* Va a sangre completa sin trucos de 100vw: es hijo directo de <section>,
+     que no tiene padding lateral, así que ya ocupa todo el ancho del
+     documento. 100vw incluiría el ancho de la barra de scroll y desplazaría
+     la rejilla unos píxeles a la izquierda. */
+  .mosaico{
+    display:grid;grid-template-columns:repeat(4,1fr);
+    gap:6px;margin-top:64px;
+  }
+  .mosaico figure{position:relative;overflow:hidden;background:var(--papel-alt);margin:0;aspect-ratio:1/1;}
+  .mosaico figure:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:2/1;}
+  .mosaico img{width:100%;height:100%;object-fit:cover;transition:transform 800ms var(--ease-out);}
+  @media (hover: hover) and (pointer: fine){
+    .mosaico figure:hover img{transform:scale(1.05);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .mosaico img{transition:none;}
+    .mosaico figure:hover img{transform:none;}
+  }
+  @media (max-width:860px){
+    .mosaico{grid-template-columns:repeat(2,1fr);gap:4px;margin-top:44px;}
+    .mosaico figure:nth-child(1){grid-column:span 2;grid-row:span 1;aspect-ratio:16/10;}
+    .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:16/10;}
+  }
+
+  .oferta{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
+  @media (max-width:860px){ .oferta{grid-template-columns:1fr;gap:44px;} }
+  .oferta-col > h3{color:var(--marca-txt);margin-bottom:4px;}
+  .lista-rayada{border-top:1px solid var(--linea);margin-top:22px;}
+  .lista-rayada li{
+    padding:18px 0;border-bottom:1px solid var(--linea);
+    font-family:var(--display);font-weight:600;font-size:1.05rem;
+    text-transform:uppercase;letter-spacing:.02em;
+  }
+  .logro{margin-top:34px;background:var(--tinta);color:#FFFFFF;padding:30px;}
+  .logro .etiqueta{
+    font-family:var(--display);font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.14em;
+    color:var(--lavanda);display:block;margin-bottom:14px;
+  }
+  .logro p{font-family:var(--display);font-size:1.3rem;font-weight:800;text-transform:uppercase;line-height:1.05;}
+  .logro .pendiente{
+    margin-top:18px;font-family:var(--texto-fam);font-size:.8rem;font-weight:400;
+    text-transform:none;color:var(--lavanda);
+    border-left:3px solid var(--morado);padding:10px 12px;
+    background:rgba(255,255,255,.07);
+  }
+
+  /* ---------- ADMISIÓN ---------- */
+  .pasos{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--marca-txt);}
+  .paso{padding:34px 26px 8px 0;}
+  .paso + .paso{border-left:1px solid var(--linea);padding-left:26px;}
+  .paso .numeral{
+    font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;
+    letter-spacing:-.02em;color:var(--lavanda);display:block;margin-bottom:18px;
+  }
+  .paso h3{font-size:1.1rem;margin-bottom:10px;color:var(--marca-txt);}
+  .paso .prosa{font-size:.95rem;}
+  /* Cuatro columnas solo con ancho real; si no, cada línea rompe en dos palabras. */
+  @media (max-width:1040px){
+    .pasos{grid-template-columns:repeat(2,1fr);}
+    .paso:nth-child(3){border-left:0;padding-left:0;border-top:1px solid var(--linea);}
+    .paso:nth-child(4){border-top:1px solid var(--linea);}
+  }
+  @media (max-width:560px){
+    .pasos{grid-template-columns:1fr;}
+    .paso + .paso{border-left:0;padding-left:0;border-top:1px solid var(--linea);}
+  }
+
+  /* ---------- CONTACTO ---------- */
+  .contacto{background:var(--papel-alt);}
+  .contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;}
+  @media (max-width:900px){ .contacto-grid{grid-template-columns:1fr;gap:44px;} }
+  .contacto-izq h2{margin-bottom:22px;max-width:13ch;}
+  .contacto-izq .prosa{margin-bottom:30px;max-width:44ch;}
+  .datos{margin-top:36px;border-top:1px solid var(--linea);}
+  .datos li{
+    display:grid;grid-template-columns:120px 1fr;gap:16px;
+    padding:15px 0;border-bottom:1px solid var(--linea);font-size:.93rem;
+  }
+  .datos b{
+    font-family:var(--display);font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.12em;color:var(--texto-tenue);
+  }
+
+  form#lead-form{display:flex;flex-direction:column;gap:22px;}
+  .campo{display:flex;flex-direction:column;gap:7px;}
+  .campo label{
+    font-family:var(--display);font-size:.74rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.11em;color:var(--texto);
+  }
+  .campo input, .campo select{
+    padding:15px 14px;border-radius:0;border:1px solid var(--linea);
+    font-family:var(--texto-fam);font-size:1rem;
+    background:var(--papel);color:var(--texto);
+    transition:border-color 180ms var(--ease);
+  }
+  .campo input::placeholder{color:var(--texto-tenue);opacity:1;}
+  .campo input:focus, .campo select:focus{outline:2px solid var(--marca-txt);outline-offset:1px;border-color:var(--marca-txt);}
+  .campo .ayuda{font-size:.82rem;color:var(--texto-suave);}
+  .campo .error{font-size:.82rem;color:var(--error);font-weight:600;display:none;}
+  .campo.invalido input, .campo.invalido select{border-color:var(--error);}
+  .campo.invalido .ayuda{display:none;}
+  .campo.invalido .error{
+    display:block;opacity:1;transform:translateY(0);
+    transition:opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+  }
+  @starting-style{ .campo.invalido .error{opacity:0;transform:translateY(-4px);} }
+
+  .btn[disabled]{opacity:.65;cursor:progress;}
+  .btn[disabled]:hover{transform:none;}
+  .form-msg{font-size:.9rem;display:none;padding:13px 15px;}
+  .form-msg.ok{
+    display:block;background:var(--exito-bg);color:var(--exito);
+    border-left:3px solid var(--exito);font-weight:600;
+    opacity:1;transform:translateY(0);
+    transition:opacity 220ms var(--ease-out), transform 220ms var(--ease-out);
+  }
+  @starting-style{ .form-msg.ok{opacity:0;transform:translateY(-6px);} }
+  @media (prefers-reduced-motion: reduce){
+    .form-msg.ok, .campo.invalido .error{transform:none;}
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-lista{border-top:1px solid var(--linea);max-width:900px;}
+  details{border-bottom:1px solid var(--linea);}
+  summary{
+    cursor:pointer;list-style:none;display:flex;justify-content:space-between;
+    align-items:center;gap:20px;padding:26px 0;
+    font-family:var(--display);font-weight:700;font-size:1.02rem;
+    text-transform:uppercase;letter-spacing:-.005em;line-height:1.2;
+  }
+  summary::-webkit-details-marker{display:none;}
+  /* El signo + gira 45° al abrir y se convierte en ×. Sin caracteres de raya. */
+  summary::after{
+    content:"+";font-family:var(--display);font-weight:500;font-size:1.5rem;
+    line-height:1;color:var(--marca-txt);flex-shrink:0;
+    transition:transform 240ms var(--ease-out);
+  }
+  details[open] summary::after{transform:rotate(45deg);}
+  @media (prefers-reduced-motion: reduce){ summary::after{transition:none;} }
+  details .prosa{padding-bottom:26px;max-width:66ch;}
+  .pend{color:var(--advertencia);font-weight:600;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--tinta);color:var(--sobre-tinta);padding:84px 0 34px;}
+  .foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:52px;padding-bottom:52px;}
+  @media (max-width:760px){ .foot-grid{grid-template-columns:1fr;gap:34px;} }
+  .foot-marca{
+    font-family:var(--display);font-weight:800;font-size:1.2rem;
+    text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;
+    color:#FFFFFF;display:block;margin-bottom:16px;
+  }
+  .foot-grid h4{
+    color:var(--lavanda);font-size:.72rem;text-transform:uppercase;
+    letter-spacing:.14em;margin-bottom:18px;font-weight:700;
+  }
+  .foot-grid p, .foot-grid li{font-size:.93rem;line-height:1.85;}
+  @media (hover: hover) and (pointer: fine){ .foot-grid a:hover{color:#FFFFFF;} }
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.2);padding-top:26px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:.83rem;color:rgba(255,255,255,.55);
+  }
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .wa-flotante{
+    position:fixed;right:22px;bottom:22px;z-index:200;
+    width:56px;height:56px;border-radius:50%;
+    background:var(--tinta);color:#FFFFFF;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 14px 32px -12px rgba(33,28,108,.62);
+    transition:transform 180ms var(--ease-out);
+  }
+  @media (hover: hover) and (pointer: fine){ .wa-flotante:hover{transform:scale(1.07);} }
+  .wa-flotante:active{transform:scale(.94);}
+  @media (prefers-reduced-motion: reduce){
+    .wa-flotante{transition:none;}
+    .wa-flotante:hover, .wa-flotante:active{transform:none;}
+  }
+  .wa-flotante svg{width:27px;height:27px;}
+
+  /* Centinela del nav: 1px al tope del documento. Sustituye al listener de
+     'scroll', que se dispara en cada frame y no se puede batchear. */
+  #nav-centinela{height:1px;width:100%;}
+</style>
+</head>
+<body>
+
+<div id="nav-centinela" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="marca">
+      <span class="marca-larga">Colegio Alejandro de Humboldt</span>
+      <span class="marca-corta">Humboldt</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#formacion">Formación</a></li>
+      <li><a href="#niveles">Niveles</a></li>
+      <li><a href="#laboratorios">Laboratorios</a></li>
+      <li><a href="#instalaciones">Instalaciones</a></li>
+      <li><a href="#admision">Admisión</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#" class="btn btn-solido btn-sm wa" data-msg="Hola, quiero información sobre el proceso de admisión.">Escríbenos</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <!-- TODO FOTO 1/12, hero, horizontal 2400x1400px. Estudiantes del colegio
+       trabajando en los Laboratorios de I+D. Reemplazar el src del <img>. -->
+  <div class="hero-foto">
+    <img src="fotos/01-hero.jpg" data-respaldo="https://picsum.photos/seed/humboldt-hero-laboratorio/2400/1400"
+         alt="[ PLACEHOLDER, reemplazar por foto real de estudiantes del colegio ]"
+         width="2400" height="1400" fetchpriority="high" decoding="async">
+  </div>
+  <div class="wrap">
+    <span class="rotulo">Admisiones abiertas</span>
+    <h1>No solo estudian. <em>Construyen.</em></h1>
+    <p class="prosa-lg">De Preescolar a Bachillerato. Los proyectos que diseñan nuestros estudiantes se implementan de verdad en el colegio.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-claro wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
+        Escríbenos
+      </a>
+      <a href="#niveles" class="btn btn-claro" style="background:transparent;border-color:rgba(255,255,255,.75);color:#FFFFFF;">Ver niveles</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ CIFRAS ============ -->
+<section class="cifras">
+  <div class="wrap cascada">
+    <div class="cifra rv">
+      <b>[ ... ]</b>
+      <span>años de experiencia educativa</span>
+    </div>
+    <div class="cifra rv">
+      <b>[ ... ]</b>
+      <span>estudiantes activos</span>
+    </div>
+    <div class="cifra rv">
+      <b>[ ... ]</b>
+      <span>proyectos implementados en el colegio</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMACIÓN ============ -->
+<section id="formacion">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Tres pilares sostienen la formación Humboldt</h2>
+    </div>
+
+    <div class="pilares cascada">
+      <div class="pilar pilar-ancho rv">
+        <!-- TODO FOTO 2/12, 1600x900px. Estudiantes construyendo o probando un
+             proyecto de los Laboratorios de I+D. -->
+        <div class="pilar-figura">
+          <img src="fotos/02-investigacion-desarrollo.jpg" data-respaldo="https://picsum.photos/seed/humboldt-investigacion-desarrollo/1600/900"
+               alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="900" loading="lazy" decoding="async">
+          <span class="numeral" aria-hidden="true">01</span>
+        </div>
+        <h3>Investigación y desarrollo</h3>
+        <p class="prosa">No solo estudian ciencia y tecnología: las aplican para resolver problemas reales del colegio.</p>
+      </div>
+
+      <div class="pilar rv">
+        <!-- TODO FOTO 3/12, 1200x900px. Clase o trabajo académico. -->
+        <div class="pilar-figura">
+          <img src="fotos/03-rigor-academico.jpg" data-respaldo="https://picsum.photos/seed/humboldt-rigor-academico/1200/900"
+               alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
+          <span class="numeral" aria-hidden="true">02</span>
+        </div>
+        <h3>Rigor académico</h3>
+        <p class="prosa">Plan de estudios exigente, con seguimiento personalizado a cada estudiante.</p>
+      </div>
+
+      <div class="pilar rv">
+        <!-- TODO FOTO 4/12, 1200x900px. Vida escolar, convivencia. -->
+        <div class="pilar-figura">
+          <img src="fotos/04-formacion-caracter.jpg" data-respaldo="https://picsum.photos/seed/humboldt-formacion-caracter/1200/900"
+               alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
+          <span class="numeral" aria-hidden="true">03</span>
+        </div>
+        <h3>[ ... nombre del eje, confirmar con el colegio ]</h3>
+        <p class="prosa">Acompañamiento en valores y formación del carácter.</p>
+        <p class="aviso">Pendiente: confirmar con el colegio cómo quieren nombrar este eje (¿formación espiritual? ¿formación en valores? ¿identidad y carácter?) antes de publicar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NIVELES ============ -->
+<section id="niveles">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Un nivel para cada etapa</h2>
+      <p class="prosa">Escríbenos por el nivel que te interesa y te contamos cupos, horarios y proceso.</p>
+    </div>
+
+    <div class="niveles">
+      <div class="nivel rv">
+        <div class="nivel-txt">
+          <h3>Preescolar</h3>
+          <span class="rango">Prejardín a Transición</span>
+          <p class="prosa">Exploración, lenguaje y desarrollo socioemocional.</p>
+        </div>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Preescolar (Prejardín a Transición).">Preguntar</a>
+      </div>
+      <div class="nivel rv">
+        <div class="nivel-txt">
+          <h3>Primaria</h3>
+          <span class="rango">1° a 5° grado</span>
+          <p class="prosa">Fundamentos académicos y primer contacto con los Laboratorios de I+D.</p>
+        </div>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Primaria (1° a 5° grado).">Preguntar</a>
+      </div>
+      <div class="nivel rv">
+        <div class="nivel-txt">
+          <h3>Bachillerato</h3>
+          <span class="rango">6° a 9° grado</span>
+          <p class="prosa">Profundización académica y proyectos de investigación en el colegio.</p>
+        </div>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Bachillerato (6° a 9° grado).">Preguntar</a>
+      </div>
+      <div class="nivel rv">
+        <div class="nivel-txt">
+          <h3>Media</h3>
+          <span class="rango">10° a 11° grado</span>
+          <p class="prosa">Preparación universitaria y liderazgo de proyectos de I+D.</p>
+        </div>
+        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Media (10° a 11° grado).">Preguntar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LABORATORIOS ============ -->
+<section id="laboratorios" class="labs">
+  <div class="wrap">
+    <div class="rv">
+      <!-- Presupuesto de rótulos: 3 en toda la página (hero, aquí, contacto).
+           El resto de secciones se sostienen solo con el titular. -->
+      <span class="rotulo">Lo que nos diferencia</span>
+      <h2 class="labs-decl">Aquí la tecnología no se <em>estudia</em>: se implementa.</h2>
+      <p class="prosa-lg">No es una clase de sistemas. Los estudiantes aprenden un método de investigación y construyen lo que el colegio necesita: se prueba, se presenta y se implementa.</p>
+    </div>
+
+    <div class="labs-grid cascada">
+      <div class="lab-out rv">
+        <span class="etiqueta">Proyecto</span>
+        <h4>[ ... nombre del proyecto ]</h4>
+        <p>[ ... descripción breve del problema que resolvieron ]</p>
+        <div class="pendiente">Pendiente: grado y año, [ ... ]</div>
+      </div>
+      <div class="lab-out rv">
+        <span class="etiqueta">Proyecto</span>
+        <h4>[ ... nombre del proyecto ]</h4>
+        <p>[ ... descripción breve del problema que resolvieron ]</p>
+        <div class="pendiente">Pendiente: grado y año, [ ... ]</div>
+      </div>
+      <div class="lab-out rv">
+        <span class="etiqueta">Proyecto</span>
+        <h4>[ ... nombre del proyecto ]</h4>
+        <p>[ ... descripción breve del problema que resolvieron ]</p>
+        <div class="pendiente">Pendiente: grado y año, [ ... ]</div>
+      </div>
+    </div>
+
+    <div class="labs-cta rv">
+      <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero conocer los Laboratorios de Investigación y Desarrollo del colegio.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
+        Escríbenos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTALACIONES ============ -->
+<section id="instalaciones">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Espacios y programas</h2>
+    </div>
+
+    <div class="oferta rv">
+      <div class="oferta-col">
+        <h3>Espacios</h3>
+        <ul class="lista-rayada">
+          <li>Laboratorio de química</li>
+          <li>Aula de música</li>
+          <li>Biblioteca</li>
+          <li>Sala de informática</li>
+        </ul>
+      </div>
+
+      <div class="oferta-col">
+        <h3>Programas</h3>
+        <ul class="lista-rayada">
+          <li>Inglés</li>
+          <li>Deportes</li>
+        </ul>
+
+        <div class="logro">
+          <span class="etiqueta">Logro reciente</span>
+          <p>Campeones del intercurso de fútbol de salón</p>
+          <div class="pendiente">Pendiente: año y categoría, [ ... ]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO FOTOS 5/12 a 12/12, mosaico de instalaciones y vida escolar.
+       La primera es la grande (1600x1600). Las demás, 900x900.
+       Esta sección es la que más pesa para un acudiente que aún no ha
+       visitado: son las fotos que hacen creíble todo lo anterior. -->
+  <div class="mosaico rv" role="group" aria-label="Instalaciones y vida escolar del colegio">
+    <figure><img src="fotos/05-patio-central.jpg" data-respaldo="https://picsum.photos/seed/humboldt-patio-central/1600/1600" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="1600" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/06-laboratorio-quimica.jpg" data-respaldo="https://picsum.photos/seed/humboldt-laboratorio-quimica/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/07-aula-musica.jpg" data-respaldo="https://picsum.photos/seed/humboldt-aula-musica/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/08-biblioteca.jpg" data-respaldo="https://picsum.photos/seed/humboldt-biblioteca/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/09-sala-informatica.jpg" data-respaldo="https://picsum.photos/seed/humboldt-sala-informatica/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/10-deportes.jpg" data-respaldo="https://picsum.photos/seed/humboldt-deportes-futbol/1800/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1800" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/11-clase-ingles.jpg" data-respaldo="https://picsum.photos/seed/humboldt-clase-ingles/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/12-vida-escolar.jpg" data-respaldo="https://picsum.photos/seed/humboldt-vida-escolar/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
+  </div>
+</section>
+
+<!-- ============ ADMISIÓN ============ -->
+<section id="admision">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Cuatro pasos para matricular</h2>
+    </div>
+
+    <div class="pasos cascada">
+      <div class="paso rv">
+        <span class="numeral" aria-hidden="true">01</span>
+        <h3>Primer contacto</h3>
+        <p class="prosa">Escríbenos por WhatsApp. Te enviamos la información y agendamos una visita.</p>
+      </div>
+      <div class="paso rv">
+        <span class="numeral" aria-hidden="true">02</span>
+        <h3>Visita y entrevista</h3>
+        <p class="prosa">Conoces las instalaciones. Hacemos una entrevista y una valoración con el estudiante.</p>
+      </div>
+      <div class="paso rv">
+        <span class="numeral" aria-hidden="true">03</span>
+        <h3>Documentación</h3>
+        <p class="prosa">Entregas los documentos para formalizar el cupo. Te acompañamos en el trámite.</p>
+      </div>
+      <div class="paso rv">
+        <span class="numeral" aria-hidden="true">04</span>
+        <h3>Matrícula y bienvenida</h3>
+        <p class="prosa">Confirmas la matrícula y coordinamos uniformes, materiales y el primer día.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="contacto">
+  <div class="wrap">
+    <div class="contacto-grid rv">
+      <div class="contacto-izq">
+        <span class="rotulo">Contacto</span>
+        <h2>Hablemos de tu proceso de admisión</h2>
+        <p class="prosa">Lo más rápido es WhatsApp. Fuera de horario, déjanos tus datos y te contactamos apenas abramos.</p>
+        <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
+          Escríbenos
+        </a>
+        <ul class="datos">
+          <li><b>Horario</b> <span>[ ... horario real de atención ]</span></li>
+          <li><b>Dirección</b> <span>[ ... dirección real del colegio ]</span></li>
+          <li><b>Correo</b> <span>[ ... correo real de admisiones ]</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <form id="lead-form" novalidate>
+          <div class="campo">
+            <label for="f-nombre">Nombre del acudiente</label>
+            <input id="f-nombre" name="nombre" type="text" required autocomplete="name">
+            <span class="error">Escribe tu nombre.</span>
+          </div>
+          <div class="campo">
+            <label for="f-tel">Teléfono de contacto</label>
+            <input id="f-tel" name="telefono" type="tel" required autocomplete="tel" placeholder="Ej. 300 123 4567">
+            <span class="ayuda">Te escribimos a este número si no logramos comunicarnos por WhatsApp.</span>
+            <span class="error">Escribe un teléfono de contacto.</span>
+          </div>
+          <div class="campo">
+            <label for="f-grado">Grado de interés</label>
+            <select id="f-grado" name="grado" required>
+              <option value="">Selecciona un nivel</option>
+              <option>Preescolar (Prejardín a Transición)</option>
+              <option>Primaria (1° a 5°)</option>
+              <option>Bachillerato (6° a 9°)</option>
+              <option>Media (10° a 11°)</option>
+            </select>
+            <span class="error">Selecciona un nivel.</span>
+          </div>
+          <button type="submit" class="btn btn-solido" id="form-submit">Enviar información</button>
+          <p class="form-msg" id="form-msg" role="status">Gracias, recibimos tus datos. Te contactaremos pronto.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Antes de escribirnos</h2>
+    </div>
+
+    <div class="faq-lista rv">
+      <details>
+        <summary>¿Cuál es el valor de la matrícula y la pensión?</summary>
+        <p class="prosa"><span class="pend">[ ... ]</span> Completar con los valores vigentes del año escolar antes de publicar.</p>
+      </details>
+      <details>
+        <summary>¿Hay cupos disponibles?</summary>
+        <p class="prosa"><span class="pend">[ ... ]</span> Indicar disponibilidad real por nivel o grado.</p>
+      </details>
+      <details>
+        <summary>¿Qué documentos necesito para matricular?</summary>
+        <p class="prosa"><span class="pend">[ ... ]</span> Listar los documentos exigidos por el colegio (registro civil, boletines, certificados, etc.).</p>
+      </details>
+      <details>
+        <summary>¿Puedo matricular a mitad de año escolar?</summary>
+        <p class="prosa"><span class="pend">[ ... ]</span> Confirmar la política del colegio sobre ingresos a mitad de año.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <span class="foot-marca">Colegio Alejandro de Humboldt</span>
+        <p>[ ... breve descripción institucional / eslogan del colegio ]</p>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>[ ... dirección real ]</li>
+          <li>[ ... correo real ]</li>
+          <li>[ ... horario real ]</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#formacion">Formación</a></li>
+          <li><a href="#niveles">Niveles</a></li>
+          <li><a href="#laboratorios">Laboratorios</a></li>
+          <li><a href="#admision">Admisión</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="anio"></span> Colegio Alejandro de Humboldt</span>
+      <span>Sitio de admisiones</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-flotante wa" data-msg="Hola, quiero información sobre el proceso de admisión al colegio." aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
+</a>
+
+<script>
+  // ---- CONFIGURACIÓN, completar antes de lanzar ----
+  const TEL = ''; // [ ... ] número institucional, formato 57XXXXXXXXXX, sin '+' ni espacios
+  const ENDPOINT = ''; // [ ... ] URL para guardar leads del formulario. Vacío = fallback a WhatsApp.
+
+  // ---- Enlaces de WhatsApp automáticos (.wa + data-msg) ----
+  function linkWhatsApp(mensaje){
+    const base = TEL ? `https://wa.me/${TEL}` : 'https://wa.me/';
+    return mensaje ? `${base}?text=${encodeURIComponent(mensaje)}` : base;
+  }
+  document.querySelectorAll('.wa').forEach(el => {
+    el.setAttribute('href', linkWhatsApp(el.dataset.msg || ''));
+    el.setAttribute('target', '_blank');
+    el.setAttribute('rel', 'noopener');
+  });
+
+  // ---- Nav: regla inferior al despegar del tope ----
+  // Centinela + IntersectionObserver en vez de un listener de 'scroll':
+  // el listener corre en cada frame de scroll y el navegador no lo batchea.
+  const nav = document.getElementById('nav');
+  const centinela = document.getElementById('nav-centinela');
+  new IntersectionObserver(([entrada]) => {
+    nav.classList.toggle('scrolled', !entrada.isIntersecting);
+  }, { threshold: 1 }).observe(centinela);
+
+  // ---- Menú móvil ----
+  const navToggle = document.getElementById('nav-toggle');
+  navToggle.addEventListener('click', () => {
+    const abierto = document.body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(abierto));
+  });
+  document.querySelectorAll('#nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.body.classList.remove('nav-open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---- Animación de aparición al hacer scroll (.rv) ----
+  const elementosRv = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window)) {
+    elementosRv.forEach(el => el.classList.add('rv-visible'));
+  } else {
+    const observador = new IntersectionObserver((entradas) => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('rv-visible');
+          observador.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    elementosRv.forEach(el => observador.observe(el));
+  }
+
+  // ---- Formulario de contacto ----
+  const form = document.getElementById('lead-form');
+  const formMsg = document.getElementById('form-msg');
+  const formSubmit = document.getElementById('form-submit');
+
+  function mensajeFallback(datos){
+    return `Hola, quiero información de matrícula.\nNombre: ${datos.nombre}\nTeléfono: ${datos.telefono}\nGrado de interés: ${datos.grado}`;
+  }
+
+  function validarFormulario(){
+    let valido = true;
+    form.querySelectorAll('.campo').forEach(campo => {
+      const input = campo.querySelector('input, select');
+      const esValido = input.checkValidity();
+      campo.classList.toggle('invalido', !esValido);
+      if (!esValido) valido = false;
+    });
+    return valido;
+  }
+
+  form.querySelectorAll('input, select').forEach(input => {
+    input.addEventListener('input', () => {
+      input.closest('.campo').classList.remove('invalido');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.classList.remove('ok');
+    formMsg.style.display = 'none';
+
+    if (!validarFormulario()) {
+      form.querySelector('.campo.invalido input, .campo.invalido select')?.focus();
+      return;
+    }
+
+    const datos = Object.fromEntries(new FormData(form));
+    formSubmit.disabled = true;
+    formSubmit.textContent = 'Enviando...';
+
+    if (ENDPOINT) {
+      try {
+        await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos)
+        });
+        formMsg.classList.add('ok');
+        formMsg.style.display = 'block';
+        form.reset();
+        formSubmit.disabled = false;
+        formSubmit.textContent = 'Enviar información';
+        return;
+      } catch (err) {
+        // Si falla el endpoint, cae al respaldo de WhatsApp.
+      }
+    }
+    window.open(linkWhatsApp(mensajeFallback(datos)), '_blank');
+    form.reset();
+    formSubmit.disabled = false;
+    formSubmit.textContent = 'Enviar información';
+  });
+
+  // ---- Respaldo de imágenes ----
+  // Cada <img> apunta a fotos/NN-nombre.jpg. Mientras ese archivo no exista,
+  // se muestra el placeholder de data-respaldo. Al subir la foto real,
+  // aparece sola. Eliminar este bloque cuando estén las 12 fotos del colegio.
+  function usarRespaldo(img){
+    if (img.dataset.respaldo && img.src !== img.dataset.respaldo) {
+      img.src = img.dataset.respaldo;
+    }
+  }
+  document.querySelectorAll('img[data-respaldo]').forEach(img => {
+    // Las que ya fallaron durante el parseo: complete en true y ancho 0.
+    if (img.complete && img.naturalWidth === 0) usarRespaldo(img);
+    else img.addEventListener('error', () => usarRespaldo(img), { once: true });
+  });
+
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
