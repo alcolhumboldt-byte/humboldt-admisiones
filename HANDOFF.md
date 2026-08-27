@@ -61,7 +61,7 @@ Nota: el nav lista 5 secciones y colapsa a hamburguesa por debajo de 1020px. Al 
    Con la dirección de diseño actual esto no es cosmético. La página *es* las fotos.
 2. `const TEL` en el `<script>` final → número institucional, formato `57XXXXXXXXXX`, sin `+` ni espacios.
 3. `const ENDPOINT` → URL para guardar los leads del formulario. Si queda vacío, el formulario abre WhatsApp con los datos prellenados (fallback funcional, sirve para lanzar).
-4. Laboratorios: reemplazar los 3 bloques `.lab-out` con proyecto real + grado + año. **Sin esto la sección pierde toda su fuerza.**
+4. Laboratorios: la sección quedó como declaración sola, sin ejemplos. Las tres tarjetas de proyecto se quitaron por decisión del colegio (26 ago 2026) en vez de dejarlas con texto de relleno. Hoy la sección afirma el método pero no lo demuestra: si aparecen proyectos reales con grado y año, recuperar el bloque `.labs-grid` del commit `2181a11` y volver a montarlo. Es la prueba que más peso tendría en toda la página.
 5. FAQ: costos, cupos, documentos de matrícula, ingreso a mitad de año.
 6. Footer: dirección real, correo real, horario real.
 7. ~~Instalaciones: año y categoría del campeonato.~~ Resuelto: el bloque `.logro` ya no cuelga de un campeonato sin fecha. Ahora nombra los logros que dio el colegio: pruebas ICFES, Olimpiadas Matemáticas y seis disciplinas deportivas.
