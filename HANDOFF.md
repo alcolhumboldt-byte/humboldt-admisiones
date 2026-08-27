@@ -59,7 +59,7 @@ Nota: el nav lista 5 secciones y colapsa a hamburguesa por debajo de 1020px. Al 
    - `4/12` vida escolar, 1200×900
    - `5/12` a `12/12` mosaico: la primera 1600×1600, la sexta 1800×900, el resto 900×900
    Con la dirección de diseño actual esto no es cosmético. La página *es* las fotos.
-2. `const TEL` en el `<script>` final → número institucional, formato `57XXXXXXXXXX`, sin `+` ni espacios.
+2. ~~`const TEL`.~~ Hecho: **573108752661** (310 875 2661). Los 9 enlaces `.wa` y el respaldo del formulario apuntan a ese número.
 3. `const ENDPOINT` → URL para guardar los leads del formulario. Si queda vacío, el formulario abre WhatsApp con los datos prellenados (fallback funcional, sirve para lanzar).
 4. Laboratorios: la sección quedó como declaración sola, sin ejemplos. Las tres tarjetas de proyecto se quitaron por decisión del colegio (26 ago 2026) en vez de dejarlas con texto de relleno. Hoy la sección afirma el método pero no lo demuestra: si aparecen proyectos reales con grado y año, recuperar el bloque `.labs-grid` del commit `2181a11` y volver a montarlo. Es la prueba que más peso tendría en toda la página.
 5. FAQ: costos, cupos, documentos de matrícula, ingreso a mitad de año.
