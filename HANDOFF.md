@@ -1,93 +1,203 @@
-# HANDOFF — Landing de Admisiones, Colegio Humboldt
+# HANDOFF — Landing de Admisiones, Colegio Alejandro de Humboldt
 
 ## Objetivo
-Landing publicitaria de una sola página para captar familias interesadas en matricular. Meta única: que el acudiente escriba por WhatsApp.
+Landing de una sola página para captar familias interesadas en matricular.
+Meta única: que el acudiente escriba por WhatsApp.
 
-## Estado actual
-Existe `index.html`: archivo único, HTML + CSS + JS inline, sin dependencias ni build. Diseño terminado y responsive. Falta contenido real y despliegue.
+## Estado actual, 31 ago 2026
+
+Trabajo hecho en la rama **`humboldt-kids`**, tres commits por encima de `main`:
+
+```
+fb17d55  Usa ilustraciones de undraw en Humboldt Kids
+b77d071  Da fondo de marca al hero mientras no exista la foto
+bd6cf46  Añade Humboldt Kids y corrige datos de admisiones
+```
+
+Árbol limpio. **Nada de esto está en producción todavía.**
+
+- **Preview pública:** https://humboldt-admisiones-dcghssz1c-musiclimpics.vercel.app
+- **Producción:** https://humboldt-admisiones.vercel.app — sirve la versión vieja de `main`
+- **Repo:** https://github.com/alcolhumboldt-byte/humboldt-admisiones
+
+La protección SSO de Vercel se desactivó para que la preview sea compartible.
+Aplica a **todo el proyecto**, no solo a un despliegue. Para revertirla:
+`vercel project protection enable --sso`
 
 ## Stack
-- Estático puro. No usar framework, la página no lo necesita.
-- Despliegue: Vercel conectado a un repo de GitHub. Sin build step.
-- Fuentes: Google Fonts, **Archivo** (display) + **Source Sans 3** (texto). Dos familias, no tres.
+- Estático puro. Un solo `index.html` con CSS y JS inline. Sin build.
+- Despliegue: Vercel. Sin build step.
+- Fuentes: Google Fonts. **Archivo** (display), **Source Sans 3** (texto),
+  **Shantell Sans** (una sola palabra del hero), **Fredoka** (solo Humboldt Kids).
 
-## Dirección de diseño: fotográfico institucional
-Rediseñada tomando como referencia thewalkerschool.org. Reglas que hay que respetar al editar:
+## Dirección de diseño
 
-- **La fotografía es el diseño.** El sitio de referencia son 66 fotos; su estética *es* la fotografía. Cada slot vacío o con placeholder de stock resta más de lo que parece. Sin fotos reales esta página no funciona: es la tarea número uno, por encima de cualquier ajuste visual.
-- **Display: grotesca pesada en versalitas.** Archivo 800, `line-height:.94`, tracking negativo. El titular hace el trabajo pesado. Nada de serif: el proyecto salió de una dirección editorial con serif y no se vuelve a ella sin decisión explícita.
-- **El índigo es el color de marca dominante**, en el papel que el granate cumple en la referencia: campos completos (banda de cifras, tarjetas de laboratorios, bloque de logro, footer) y color de marca en titulares de subsección. No es un acento diluido sobre cada elemento.
-- **Un solo sistema de esquinas: radio 0.** Botones, inputs y fotos, todo rectangular. La única excepción es el botón flotante de WhatsApp, que es circular.
-- **Presupuesto de rótulos: 3 en toda la página** (hero, laboratorios, contacto). El rótulo es la versalita pequeña sobre el titular. Ponerlo en cada sección es la firma más reconocible de página hecha por IA. Si agregas una sección, no le pongas rótulo: el titular ya nombra la sección.
-- **Sin rayas em ni en (`—`, `–`) en ningún texto visible.** Coma, punto o dos puntos. Es la otra firma delatora.
-- **El texto se gana su lugar.** Un acudiente escanea, no lee. Titulares de 8 palabras o menos, párrafos de 25 o menos. El titular del hero es de 2 líneas en escritorio: es una regla dura, no una preferencia.
-- **Familias de layout, una vez cada una.** Hero a sangre, banda de cifras, rejilla asimétrica de tarjetas foto, lista rayada, declaración grande + campo índigo, mosaico a sangre, pasos numerados, formulario a dos columnas, acordeón. No repetir una familia en dos secciones.
+La página es **clara siempre**. No sigue el tema del sistema; el modo oscuro
+se eliminó por decisión del colegio. Estaba resuelto y verificado en AA en el
+commit `3542f7f` si algún día se quiere recuperar.
 
-## Estructura de la página
-1. Nav sticky (anclas en versalitas + CTA)
-2. Hero: foto a sangre + titular gigante encima + CTA WhatsApp
-3. Banda de 3 cifras sobre campo índigo
-4. `#formacion` — rejilla asimétrica de 3 tarjetas foto con numeral calado; la de I+D ocupa el campo ancho
-5. `#niveles` — lista editorial de 4 filas con reglas; cada fila abre WhatsApp con mensaje distinto
-6. `#laboratorios` — **sección diferenciadora**. Declaración grande + 3 tarjetas índigo + CTA. Es el gancho de venta.
-7. `#instalaciones` — dos listas rayadas + bloque índigo del logro deportivo, seguido del **mosaico de fotos a sangre**
-8. `#admision` — 4 pasos numerados
-9. `#contacto` — CTA WhatsApp + formulario de 3 campos
-10. `#faq` — acordeón (`<details>`)
-11. Footer índigo + botón WhatsApp flotante
+Reglas que hay que respetar al editar:
 
-Nota: el nav lista 5 secciones y colapsa a hamburguesa por debajo de 1020px. Al agregar otra, quitar una antes.
+- **La fotografía es el diseño.** Sin fotos reales la página no funciona.
+  Es la tarea número uno, por encima de cualquier ajuste visual.
+- **Titulares en caja mixta**, no versalitas. El bloque de mayúsculas
+  endurecía la página. El gesto lo da la manuscrita de acento.
+- **La manuscrita (Shantell Sans) aparece una sola vez**, en "abiertas" del
+  hero. Si se repite deja de ser gesto y se vuelve decoración.
+- **El índigo `#211C6C` es el color dominante**: campos completos (banda de
+  cifras, laboratorios, footer, cierre de Humboldt Kids). No es un acento
+  diluido sobre cada elemento.
+- **Un solo sistema de esquinas: radio 0.** Las dos excepciones son el botón
+  flotante de WhatsApp y todo lo que vive dentro de `.hk`.
+- **Presupuesto de rótulos: 3 en toda la página** (hero, laboratorios,
+  contacto). Ponerlo en cada sección es la firma más reconocible de página
+  hecha por IA. Si agregas una sección, no le pongas rótulo.
+- **Sin rayas em ni en (`—`, `–`) en ningún texto visible.** Coma, punto o
+  dos puntos. Es la otra firma delatora.
+- **El texto se gana su lugar.** Titulares de 8 palabras o menos, párrafos de
+  25 o menos. El titular del hero es de 2 líneas en escritorio: regla dura.
+- **Familias de layout, una vez cada una.** No repetir una familia en dos
+  secciones.
+
+## Paleta
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--tinta` / `--marca-txt` | `#211C6C` | Índigo del logo. Fondos y titulares de marca |
+| `--tinta-hover` | `#171248` | El mismo, al pasar el puntero |
+| `--morado` | `#6D68B0` | Morado medio del logo |
+| `--lavanda` | `#B7B3E3` | Lavanda del logo. "abiertas" en el hero |
+| `--amarillo` | `#F5B700` | Preescolar. Coincide con el dorado de la mascota |
+| `--turquesa` | `#00B4A6` | Primaria |
+| `--coral` | `#FF5A5F` | Secundaria |
+| `--violeta` | `#7B61FF` | Media |
+
+**Cada acento tiene un par `-txt` más oscuro.** Los tonos plenos no alcanzan
+4.5:1 sobre papel. Para fondos y figuras se usa el pleno; para texto sobre
+claro, el `-txt`. Romper esto rompe el contraste AA, que está verificado en
+toda la página.
+
+## Estructura
+
+1. Nav sticky, 5 anclas y CTA. Colapsa a hamburguesa bajo 1020px.
+2. Hero: foto a sangre, titular "Admisiones abiertas", CTA WhatsApp
+3. Banda de 3 cifras sobre índigo
+4. `#formacion` — rejilla asimétrica de 3 tarjetas foto
+5. `#niveles` — lista rayada de 4 filas, cada una con su marca geométrica y
+   su color. La mascota preside la sección.
+6. `#humboldt-kids` — **mundo visual propio**, ver abajo
+7. `#laboratorios` — declaración grande sobre campo índigo
+8. `#instalaciones` — dos listas rayadas, bloque de logro, mosaico de fotos
+9. `#admision` — 3 pasos numerados + panel de horarios en relieve
+10. `#contacto` — CTA WhatsApp, datos, mapa, formulario de 3 campos
+11. `#faq` — acordeón
+12. Footer índigo + botón WhatsApp flotante
+
+Nota: el nav lista 5 secciones. Al agregar otra, quitar una antes.
+
+## Humboldt Kids
+
+Sección para Preescolar y Primaria con estética propia: dorado de fondo,
+curvas, Fredoka redonda, título con contorno tipo calcomanía, sombras
+sólidas desplazadas.
+
+**Todo su estilo vive bajo `.hk`.** Esa encapsulación es deliberada: evita
+que la estética infantil se filtre al resto de la página, que le habla a un
+papá de 11°. No sacar reglas de `.hk` al ámbito global.
+
+Usa ilustraciones de undraw en `ilustraciones/`, ya en el índigo del logo.
 
 ## Convenciones del código
-- Todo elemento con clase `.wa` recibe el link de WhatsApp automáticamente. El texto prellenado sale del atributo `data-msg`. Para agregar un CTA nuevo: `<a href="#" class="wa" data-msg="...">`.
+
+- Todo elemento con clase `.wa` recibe el link de WhatsApp automáticamente.
+  El texto prellenado sale de `data-msg`. Para un CTA nuevo:
+  `<a href="#" class="wa" data-msg="...">`
 - Variables CSS en `:root`. No hardcodear colores.
-- **`--tinta` es fondo, `--marca-txt` es primer plano.** El índigo de marca sobre papel se pinta con `--marca-txt`, que se aclara en modo oscuro; `--tinta` se queda para campos de fondo. Usar `--tinta` como color de texto rompe el contraste en oscuro.
-- **Modo oscuro por `prefers-color-scheme`**, resuelto conmutando tokens en un solo bloque `@media`. Verificado: todo el texto pasa WCAG AA en ambos modos (mínimo medido 5.16:1 en claro).
-- El mosaico de `#instalaciones` es hijo directo de `<section>` y va a sangre sin `100vw`: ese truco incluye el ancho de la barra de scroll y desplaza la rejilla unos píxeles. La rejilla tiene **8 celdas exactas**; si cambias el número de fotos, reajusta los `span` para que no quede ninguna vacía.
-- Clase `.rv` = animación de aparición al hacer scroll (IntersectionObserver). Respeta `prefers-reduced-motion`. Poner `.cascada` en el contenedor para escalonar los hijos.
+- `.rv` = aparición al hacer scroll (IntersectionObserver). `.cascada` en el
+  contenedor escalona los hijos.
+- El nav usa **centinela de 1px + IntersectionObserver**, no un listener de
+  `scroll`: ese listener corre en cada frame y el navegador no lo batchea.
+- **Animación:** `--ease-out` para entradas y salidas, `--ease` para hover y
+  color. Pulsación a 160ms. Todo `:hover` va dentro de
+  `@media (hover: hover) and (pointer: fine)` para que no se dispare al tocar
+  en móvil. `prefers-reduced-motion` detiene los bucles infinitos por
+  completo, no los acorta.
+- **Relieve:** tokens `--neu-alto`, `--neu-bajo`, `--neu-hundido`. Solo en
+  contenedores (horarios, FAQ, inputs). El contraste del texto nunca depende
+  de esas sombras, y los inputs conservan su borde.
+- **Respaldo de imágenes:** cada `<img>` apunta a su archivo real y cae a
+  `picsum` vía `data-respaldo`. Si ambas fallan, la imagen se **oculta** en
+  vez de dibujar su texto alternativo, que dice "[ PLACEHOLDER ]". El
+  listener de error **no** puede llevar `{ once: true }`: hacen falta dos
+  fallos, el de la foto real y el del respaldo.
 - Marcadores `[ ... ]` = contenido pendiente por reemplazar.
-- El estado del nav al hacer scroll usa un **centinela de 1px + IntersectionObserver**, no un listener de `scroll`: ese listener corre en cada frame y el navegador no lo batchea.
-- **Animación:** curvas en `--ease-out` (entradas/salidas) y `--ease` (hover/color). Feedback de pulsación a 160ms. Todo `:hover` va dentro de `@media (hover: hover) and (pointer: fine)` para que no se dispare al tocar en móvil. `prefers-reduced-motion` conserva opacidad y color, elimina solo el movimiento.
 
 ## Tareas pendientes
 
 ### Bloqueantes para lanzar
-1. **Las 12 fotos.** Hoy son placeholders de `picsum.photos`, buscar `TODO FOTO` en el HTML. Ninguna puede salir a producción: son fotos de stock de gente ajena al colegio en una página de admisiones. Slots, con sus medidas:
-   - `1/12` hero, horizontal 2400×1400
-   - `2/12` I+D, 1600×900
-   - `3/12` rigor académico, 1200×900
-   - `4/12` vida escolar, 1200×900
-   - `5/12` a `12/12` mosaico: la primera 1600×1600, la sexta 1800×900, el resto 900×900
-   Con la dirección de diseño actual esto no es cosmético. La página *es* las fotos.
-2. ~~`const TEL`.~~ Hecho: **573108752661** (310 875 2661). Los 9 enlaces `.wa` y el respaldo del formulario apuntan a ese número.
-3. `const ENDPOINT` → URL para guardar los leads del formulario. Si queda vacío, el formulario abre WhatsApp con los datos prellenados (fallback funcional, sirve para lanzar).
-4. Laboratorios: la sección quedó como declaración sola, sin ejemplos. Las tres tarjetas de proyecto se quitaron por decisión del colegio (26 ago 2026) en vez de dejarlas con texto de relleno. Hoy la sección afirma el método pero no lo demuestra: si aparecen proyectos reales con grado y año, recuperar el bloque `.labs-grid` del commit `2181a11` y volver a montarlo. Es la prueba que más peso tendría en toda la página.
-5. FAQ: costos, cupos, documentos de matrícula, ingreso a mitad de año.
-6. Footer: dirección real, correo real, horario real.
-7. ~~Instalaciones: año y categoría del campeonato.~~ Resuelto: el bloque `.logro` ya no cuelga de un campeonato sin fecha. Ahora nombra los logros que dio el colegio: pruebas ICFES, Olimpiadas Matemáticas y seis disciplinas deportivas.
-8. Instalaciones: preguntar al colegio qué escenarios deportivos tienen (cancha, coliseo, polideportivo) — hay equipo campeón pero el espacio no está listado porque nadie lo confirmó. Tampoco se inventó.
-9. ~~Logo y colores oficiales del colegio.~~ Hecho: paleta tomada del logo oficial, familia índigo/morado. Los tokens vigentes son `--tinta` #211C6C, `--morado` #6D68B0 y `--lavanda` #B7B3E3 (los nombres viejos `--verde` y `--marigold` ya no existen). Falta insertar el logo real como imagen: hoy en el nav y el footer solo está el nombre en texto.
 
-### Abiertos por el contenido nuevo
-- **Nombre del colegio.** La página dice "Colegio Alejandro **de** Humboldt"; el texto que entregó el colegio lo escribe cuatro veces como "Colegio Alejandro Humboldt", sin el "de". Confirmar cuál es el nombre oficial. Aparece en el `<title>`, el nav, el footer y la meta description.
-- **Cómo se reserva el cupo de verdad.** Los botones dicen "Reserva tu cupo" y hoy todos abren WhatsApp. El texto del colegio describe un formulario de admisión propio. Si ese formulario existe, decidir si el botón lleva allí en vez de a WhatsApp.
-- **Nombre de los laboratorios.** El HANDOFF fijó "Laboratorios de Investigación y Desarrollo"; el colegio los llama "Laboratorios de Química e Innovación". Hoy la sección usa el segundo en el cuerpo pero conserva el posicionamiento del primero. Unificar.
-- **Confirmar el "6"** de disciplinas deportivas en la banda de cifras. El colegio escribió "incluyendo", así que pueden ser más.
-- Faltan dos cifras reales para esa banda si se quieren números: años de trayectoria y número de estudiantes.
+1. **Las 14 fotos.** Hoy todas caen a `picsum`, que son fotos de stock de
+   gente ajena al colegio. Buscar `TODO FOTO` en el HTML; las medidas y los
+   nombres exactos están en `fotos/LEEME.md`. **Ninguna puede salir a
+   producción.** Hay autorización de imagen de por medio: son menores.
+2. **FAQ, 2 respuestas:** requisitos de 9°, 10° y 11°, y política de ingreso
+   a mitad de año. Están marcadas con `[ ... ]` y son visibles en la página.
+3. **Año escolar del hero.** El rótulo dice "Prejardín a grado 11", que
+   duplica la banda de cifras justo debajo. Se decidió cambiarlo por el año
+   ("Año escolar 2027") pero falta confirmar cuál es.
+4. **Fusionar `humboldt-kids` a `main` y desplegar a producción.**
 
 ### Después del lanzamiento
-- Backend del formulario: tabla en Supabase (`nombre`, `tel`, `grado`, `created_at`) + notificación.
-- SEO: `og:image`, favicon, JSON-LD tipo `School`.
-- Autoalojar las fuentes. Hoy entran por `<link>` a Google Fonts, que cuesta una conexión extra antes de que pinte el texto. Se mitigó con `preconnect`, pero si algún día hay build step o se aceptan archivos junto al HTML, descargar los woff2 y servirlos con `@font-face` + `font-display:swap`.
-- Pixel de Meta para pauta pagada.
-- Testimonios reales de padres (aún no existen en la página).
 
-## Decisiones ya tomadas — no rediscutir
-- WhatsApp es la acción principal, no el formulario. El formulario es respaldo para quien escribe fuera de horario.
-- El área de tecnología se vende como **Laboratorios de Investigación y Desarrollo**, nunca como "clase de sistemas" ni como "los estudiantes hacen apps". Se vende el método, no el producto.
+- `const ENDPOINT`: hoy vacío, así que el formulario abre WhatsApp con los
+  datos prellenados. Sin correo de admisiones, ese es el comportamiento
+  definitivo, no un respaldo. **Ojo:** el texto de contacto dice "déjanos tus
+  datos y te contactamos", pero si el acudiente no pulsa enviar en WhatsApp,
+  ese lead no existe para nadie. O se ajusta el texto, o se conecta el
+  endpoint a una tabla en Supabase.
+- SEO: `og:image`, favicon, JSON-LD tipo `School`. Importa más de lo normal
+  porque el canal de distribución es WhatsApp: cuando alguien reenvía el
+  link, la tarjeta de vista previa es lo que se comparte.
+- Autoalojar las fuentes. Hoy son 4 familias por `<link>` a Google Fonts.
+- Pixel de Meta para pauta pagada.
+- Testimonios reales de padres.
+
+## Datos del colegio
+
+- **Dirección:** Calle 3 #7a-45, Sogamoso, Boyacá
+- **WhatsApp:** 320 458 1513 — es el número que responde chats
+- **Llamadas:** 310 875 2661 — **no** responde WhatsApp
+- **Fijo:** 770 04 94
+- **Sin correo de admisiones.** Todo va por WhatsApp, por decisión del colegio.
+- **Formulario de inscripción:** $70.000, dos partes, una la diligencia el
+  acudiente y otra el colegio actual del estudiante
+- **Horarios:** Preescolar 7:15 a 12:45, primaria 6:45 a 12:45, secundaria y
+  media 6:15 a 1:30. Lúdicas 2 o 3 días, no obligatorias.
+- **ICFES:** 2° en la ciudad, entre los cinco mejores los últimos años. Es el
+  puesto **del colegio**, no de estudiantes sueltos.
+- Costos de matrícula y pensión los regula la Secretaría de Educación.
+
+## Decisiones ya tomadas, no rediscutir
+
+- WhatsApp es la acción principal, no el formulario.
+- El área de tecnología se vende como **Laboratorios de Química e Innovación**,
+  nunca como "clase de sistemas". Se vende el método, no el producto.
 - Sin CMS. El contenido se edita directo en el HTML.
+- Nombre oficial: **Colegio Alejandro de Humboldt**, con "de".
+- La página es siempre clara. Sin modo oscuro.
+- El tercer pilar de formación se llama **Formación en valores cristianos**.
 
 ## Advertencias
-- ~~Nombre del tercer pilar.~~ Resuelto: el colegio lo llama **Formación en valores cristianos**. Así quedó en la página.
-- Definir quién responde el WhatsApp y en qué horario **antes** de lanzar. Un lead sin respuesta en menos de 5 minutos se enfría; sin eso la página no sirve.
-- Nada de lo que está en `[ ... ]` puede salir a producción.
+
+- **La mascota fue recoloreada.** Su navy original era `#00243C`, que choca
+  con el índigo del logo. Se llevó a `#211C6C`. Si el colegio la usa impresa
+  en el navy original, hay dos versiones circulando: vale confirmarlo.
+- **El infográfico de inscripción está vencido.** Dice "valores para el 2025"
+  y estamos en agosto de 2026. Confirmar que el proceso sigue igual.
+- **Definir quién responde el WhatsApp y en qué horario antes de lanzar.**
+  Un lead sin respuesta en menos de 5 minutos se enfría. Sin eso la página no
+  sirve por buena que quede.
+- **Nada de lo que está en `[ ... ]` puede salir a producción.**
+- El panel de vista previa del entorno de desarrollo no sincroniza bien el
+  scroll ni el caché. Verificar con recarga forzada (`?v=N`) y, ante la duda,
+  comprobar por JS en vez de fiarse de la captura.
