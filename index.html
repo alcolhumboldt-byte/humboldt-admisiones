@@ -223,7 +223,15 @@
      referencia. El degradado no es decorativo: garantiza contraste del texto
      sobre cualquier fotografía que entre después. */
   .hero{position:relative;min-height:min(86dvh, 780px);display:flex;align-items:flex-end;padding:0;overflow:hidden;}
-  .hero-foto{position:absolute;inset:0;z-index:0;}
+  /* Fondo de respaldo del hero. Mientras 01-hero.jpg no exista, el degradado
+     de contraste queda solo y llena la primera pantalla de gris sucio, que
+     se lee como si la página fuera oscura. Con el índigo de marca debajo, el
+     hueco al menos pertenece al colegio. Al poner la foto, esto desaparece
+     bajo la imagen sin tocar nada. */
+  .hero-foto{
+    position:absolute;inset:0;z-index:0;
+    background:linear-gradient(160deg, var(--tinta) 0%, #3A32A8 55%, var(--morado) 100%);
+  }
   /* Acercamiento lentísimo y continuo. Da vida a una foto fija sin pedirle
      nada al usuario ni depender del scroll. 28s y 4% de recorrido: si se
      nota que se mueve, está mal calibrado. */
@@ -1493,7 +1501,12 @@
   function usarRespaldo(img){
     if (img.dataset.respaldo && img.src !== img.dataset.respaldo) {
       img.src = img.dataset.respaldo;
+      return;
     }
+    // Si el respaldo también falla, se oculta la imagen. Si no, el navegador
+    // dibuja el texto alternativo, y ese texto dice "[ PLACEHOLDER ]": queda
+    // peor que no mostrar nada. Debajo hay un fondo de marca esperando.
+    img.style.visibility = 'hidden';
   }
   document.querySelectorAll('img[data-respaldo]').forEach(img => {
     // Las que ya fallaron durante el parseo: complete en true y ancho 0.
