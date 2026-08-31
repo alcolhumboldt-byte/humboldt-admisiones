@@ -7,18 +7,27 @@
 <meta name="description" content="Admisiones abiertas desde Prejardín hasta grado 11. Formación en valores cristianos, excelencia académica y Laboratorios de Química e Innovación. Reserva el cupo de tu hijo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Fredoka:wght@500;600&family=Shantell+Sans:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root{
     /* Índigo del logo oficial. Cumple el rol que el granate cumple en la
        referencia: color de marca dominante, no acento diluido. */
     --tinta: #211C6C;
     --tinta-hover: #171248;
-    /* Marca sobre papel. En claro es el mismo índigo; en oscuro tiene que
-       aclararse o queda índigo casi negro sobre fondo casi negro. */
+    /* Índigo de marca cuando va como texto sobre papel. --tinta queda
+       reservado para campos de fondo. */
     --marca-txt: #211C6C;
     --morado: #6D68B0;
     --lavanda: #B7B3E3;
+
+    /* Acentos por nivel. El índigo sigue siendo la marca; estos identifican
+       la etapa del estudiante y se repiten en niveles e instalaciones.
+       Cada uno tiene par oscuro para texto sobre papel: el tono pleno se
+       usa en fondos, no en tipografía chica. */
+    --amarillo: #F5B700;   --amarillo-txt: #8A6600;
+    --turquesa: #00B4A6;   --turquesa-txt: #00675E;
+    --coral: #FF5A5F;      --coral-txt: #B32C31;
+    --violeta: #7B61FF;    --violeta-txt: #4B34C9;
 
     /* Fondos: blanco roto y gris papel. Nunca #fff ni #000 puros. */
     --papel: #FCFCFB;
@@ -42,30 +51,21 @@
     --contenedor: 1320px;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Relieve suave. Luz arriba a la izquierda, sombra abajo a la derecha,
+       siempre en ese orden: si se invierte en un elemento, el ojo lee dos
+       fuentes de luz y el efecto se rompe. Va solo en contenedores; el
+       contraste del texto nunca depende de estas sombras. */
+    --neu-luz: rgba(255,255,255,.92);
+    --neu-sombra: rgba(33,28,108,.14);
+    --neu-alto: -5px -5px 12px var(--neu-luz), 6px 6px 16px var(--neu-sombra);
+    --neu-bajo: -3px -3px 7px var(--neu-luz), 3px 3px 8px var(--neu-sombra);
+    --neu-hundido: inset 3px 3px 7px var(--neu-sombra), inset -3px -3px 7px var(--neu-luz);
   }
 
-  /* Modo oscuro: se conmutan los tokens de papel y texto. La marca no se
-     desatura, el índigo tiene que seguir siendo reconocible de noche. */
-  @media (prefers-color-scheme: dark){
-    :root{
-      --papel: #131319;
-      --papel-alt: #1B1B22;
-      --linea: #32323C;
-      --texto: #F2F2F0;
-      --texto-suave: #B4B4BE;
-      --texto-tenue: #8A8A96;
-      --tinta: #2E278C;
-      --tinta-hover: #3A32A8;
-      --marca-txt: #B9B4EE;
-      --morado: #9A95D8;
-      --lavanda: #C6C2EC;
-      --advertencia: #E5BE79;
-      --advertencia-bg: #2E2618;
-      --exito: #7FCB9F;
-      --exito-bg: #16281D;
-      --error: #E8899C;
-    }
-  }
+  /* La página es siempre clara, por decisión: no sigue el tema del sistema.
+     Si algún día se quiere modo oscuro, está resuelto y verificado en el
+     commit 3542f7f, conmutando estos mismos tokens en un solo @media. */
 
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -93,9 +93,11 @@
   /* ---------- TIPOGRAFÍA ----------
      Grotesca pesada en versalitas, interlineado casi 1 y tracking negativo:
      la métrica del sitio de referencia. La jerarquía la carga el tipo. */
+  /* Caja mixta, no versalitas. El bloque de mayúsculas pesaba demasiado y
+     endurecía la página; el gesto ahora lo da la manuscrita de acento. */
   h1,h2,h3,h4{
     font-family:var(--display);font-weight:800;
-    text-transform:uppercase;letter-spacing:-.015em;line-height:.94;
+    letter-spacing:-.025em;line-height:.98;
   }
   h1{font-size:clamp(2.35rem, 4.75vw, 4.05rem);}
   h2{font-size:clamp(2.1rem, 5vw, 4.25rem);}
@@ -145,7 +147,13 @@
   }
 
   /* ---------- REVEAL ---------- */
-  .rv{opacity:0;transform:translateY(22px);transition:opacity 620ms var(--ease-out), transform 620ms var(--ease-out);}
+  /* Entra desde abajo y desde un pelo más pequeño. La escala es lo que da
+     sensación de acercarse, no solo de aparecer: 0.985 es suficiente, más
+     se nota como truco. */
+  .rv{
+    opacity:0;transform:translateY(22px) scale(.985);
+    transition:opacity 620ms var(--ease-out), transform 620ms var(--ease-out);
+  }
   .rv.rv-visible{opacity:1;transform:none;}
   .cascada > .rv:nth-child(2){transition-delay:.07s;}
   .cascada > .rv:nth-child(3){transition-delay:.14s;}
@@ -153,6 +161,11 @@
   @media (prefers-reduced-motion: reduce){
     .rv{transform:none;transition:opacity 300ms var(--ease);}
     .cascada > .rv:nth-child(n){transition-delay:0ms;}
+    /* Los bucles infinitos son lo que peor cae con mareo por movimiento:
+       se detienen por completo, no se acortan. */
+    .hero-foto img, .mascota{animation:none;transform:none;}
+    .tira, .tira svg, .nivel-marca{transition:none;}
+    .tira:hover, .tira:hover svg, .nivel:hover .nivel-marca{transform:none;}
   }
 
   /* ---------- NAV ---------- */
@@ -211,15 +224,40 @@
      sobre cualquier fotografía que entre después. */
   .hero{position:relative;min-height:min(86dvh, 780px);display:flex;align-items:flex-end;padding:0;overflow:hidden;}
   .hero-foto{position:absolute;inset:0;z-index:0;}
-  .hero-foto img{width:100%;height:100%;object-fit:cover;}
+  /* Acercamiento lentísimo y continuo. Da vida a una foto fija sin pedirle
+     nada al usuario ni depender del scroll. 28s y 4% de recorrido: si se
+     nota que se mueve, está mal calibrado. */
+  .hero-foto img{
+    width:100%;height:100%;object-fit:cover;
+    animation:respira 28s ease-in-out infinite alternate;
+    will-change:transform;
+  }
+  @keyframes respira{
+    from{transform:scale(1);}
+    to{transform:scale(1.04);}
+  }
   .hero-foto::after{
     content:"";position:absolute;inset:0;
     background:linear-gradient(to top, rgba(12,10,32,.88) 0%, rgba(12,10,32,.62) 42%, rgba(12,10,32,.28) 100%);
   }
   .hero .wrap{position:relative;z-index:1;padding-top:96px;padding-bottom:76px;width:100%;}
   .hero .rotulo{color:var(--lavanda);}
-  .hero h1{color:#FFFFFF;max-width:30ch;margin-bottom:26px;}
-  .hero h1 em{font-style:normal;color:var(--lavanda);}
+  /* El titular es el anuncio, no el eslogan: la página existe para avisar que
+     las admisiones están abiertas. Dos palabras, así que escala más que el h1
+     general. El ancho de 11ch fuerza las 2 líneas de la regla del hero. */
+  .hero h1{
+    color:#FFFFFF;max-width:13ch;margin-bottom:26px;
+    font-size:clamp(2.7rem, 7.6vw, 5.6rem);
+  }
+  /* Palabra de acento a mano. Es el único lugar de la página donde entra
+     Shantell Sans: si se repite deja de ser gesto y se vuelve decoración.
+     Sube un poco de cuerpo porque la manuscrita tiene ojo medio menor. */
+  .hero h1 em{
+    font-family:'Shantell Sans', 'Archivo', cursive;
+    font-style:normal;font-weight:700;
+    font-size:1.16em;letter-spacing:-.01em;
+    color:var(--lavanda);
+  }
   .hero .prosa-lg{color:rgba(255,255,255,.86);max-width:52ch;margin-bottom:34px;}
   .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
   @media (max-width:860px){
@@ -252,8 +290,32 @@
   .sec-head .prosa{max-width:58ch;margin-top:22px;}
   @media (max-width:860px){ .sec-head{margin-bottom:42px;} }
 
+  /* Encabezado con mascota. Aparece una sola vez en la página: el león es
+     un dibujo detallado y repetirlo en cada fila competiría con las marcas
+     geométricas de nivel, que son las que tienen que leerse rápido. */
+  .sec-head-masc{
+    display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;
+    max-width:none;
+  }
+  .sec-head-masc > div{max-width:900px;}
+  /* Flotación leve. Es un personaje de caricatura: quieto se lee como una
+     calcomanía pegada, y con un balanceo mínimo se lee como mascota. */
+  .mascota{
+    width:190px;height:auto;flex-shrink:0;align-self:end;
+    animation:flota 4.5s ease-in-out infinite;
+    transform-origin:50% 100%;
+  }
+  @keyframes flota{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-9px) rotate(-1.2deg);}
+  }
+  @media (max-width:860px){
+    .sec-head-masc{grid-template-columns:1fr;gap:20px;}
+    .mascota{width:130px;justify-self:end;margin-top:-8px;}
+  }
+
   /* ---------- FORMACIÓN, tarjetas fotográficas con numeral calado ----------
-     Rejilla asimétrica: el pilar de I+D es el diferenciador y ocupa el campo
+     Rejilla asimétrica: el pilar de laboratorios es el diferenciador y ocupa el campo
      ancho. Evita la fila de tres tarjetas idénticas. */
   .pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
   .pilar{display:flex;flex-direction:column;}
@@ -297,10 +359,24 @@
   /* ---------- NIVELES, lista editorial con reglas ---------- */
   .niveles{border-top:1px solid var(--linea);}
   .nivel{
-    display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;
+    display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;
     padding:34px 0;border-bottom:1px solid var(--linea);
     transition:background 220ms var(--ease);
   }
+  /* Marca del nivel: mismas piezas geométricas recombinadas, un color por
+     etapa. El acento acompaña al estudiante mientras avanza de nivel. */
+  .nivel-marca{
+    width:64px;height:64px;display:block;flex-shrink:0;
+    transition:transform 420ms var(--ease-out);
+  }
+  /* La marca gira al pasar por la fila. Confirma que la fila entera es
+     interactiva, no solo el botón del extremo. Lleva escala además del giro
+     porque la de Preescolar es un círculo dentro de un cuadrado: rotarla
+     sola no produce ningún cambio visible. */
+  @media (hover: hover) and (pointer: fine){
+    .nivel:hover .nivel-marca{transform:rotate(-90deg) scale(1.09);}
+  }
+  @media (max-width:700px){ .nivel-marca{width:48px;height:48px;} }
   @media (hover: hover) and (pointer: fine){
     .nivel:hover{background:var(--papel-alt);}
   }
@@ -312,8 +388,8 @@
   }
   .nivel .prosa{font-size:.98rem;flex-basis:100%;max-width:58ch;margin-top:2px;}
   @media (max-width:700px){
-    .nivel{grid-template-columns:1fr;gap:18px;align-items:start;padding:28px 0;}
-    .nivel .btn{justify-self:start;}
+    .nivel{grid-template-columns:auto 1fr;gap:16px 18px;align-items:start;padding:28px 0;}
+    .nivel .btn{grid-column:2;justify-self:start;}
   }
 
   /* ---------- LABORATORIOS, declaración grande + campo índigo ---------- */
@@ -352,6 +428,155 @@
     .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:16/10;}
   }
 
+  /* ================= HUMBLE KIDS =================
+     Mundo visual propio, deliberadamente distinto al resto de la página.
+     El resto es índigo sobrio para un papá de 11°; aquí manda el color,
+     la curva y una tipografía redonda. Todo lo de Humble Kids vive bajo
+     .hk para que ese estilo no se escape a ninguna otra sección. */
+  .hk{
+    /* Paleta institucional, no primarios genéricos. El dorado es el de la
+       mascota (#E49C24) y el índigo el del logo; violeta y turquesa ya son
+       acentos de la página. Así la sección se siente distinta sin dejar de
+       pertenecer al colegio. */
+    --hk-indigo:var(--tinta);        /* #211C6C, del logo */
+    --hk-violeta:var(--violeta);     /* #7B61FF */
+    --hk-turquesa:var(--turquesa);   /* #00B4A6 */
+    /* Versiones oscuras para titulares sobre crema: los plenos no alcanzan
+       4.5:1 y el titular tiene que leerse sin esfuerzo. */
+    --hk-indigo-txt:#211C6C;
+    --hk-violeta-txt:var(--violeta-txt);
+    --hk-turquesa-txt:var(--turquesa-txt);
+    --hk-sol:#F0AE1E;  --hk-crema:#FFF6E3; --hk-tinta:#2A2010;
+    background:var(--hk-sol);
+    color:var(--hk-tinta);
+    border-radius:0 0 56px 56px;
+    padding:96px 0 88px;
+    position:relative;overflow:hidden;
+    font-family:'Fredoka',var(--display),sans-serif;
+  }
+  @media (max-width:860px){ .hk{padding:68px 0 64px;border-radius:0 0 34px 34px;} }
+
+  /* Burbujas de fondo. Puramente decorativas y detrás de todo. */
+  .hk-burbuja{position:absolute;border-radius:50%;pointer-events:none;opacity:.5;}
+  .hk-b1{width:320px;height:320px;background:#FFD34D;top:-90px;right:-70px;}
+  .hk-b2{width:200px;height:200px;background:#FFE08A;bottom:60px;left:-80px;}
+  .hk .wrap{position:relative;z-index:1;}
+
+  /* Título calcomanía: contorno blanco grueso y sombra corta. */
+  .hk-titulo{
+    font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:clamp(3rem,10vw,7rem);line-height:.9;letter-spacing:-.02em;
+    color:var(--hk-indigo);text-align:center;
+    text-shadow:
+      -4px -4px 0 #fff, 4px -4px 0 #fff, -4px 4px 0 #fff, 4px 4px 0 #fff,
+      -6px 0 0 #fff, 6px 0 0 #fff, 0 -6px 0 #fff, 0 6px 0 #fff,
+      0 10px 0 rgba(21,34,74,.16);
+  }
+  .hk-lema{
+    text-align:center;font-size:clamp(1.05rem,2.2vw,1.4rem);font-weight:500;
+    margin:18px auto 0;max-width:30ch;color:var(--hk-tinta);
+  }
+
+  /* Etapas: pastillas de colores. */
+  .hk-etapas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px;}
+  .hk-etapa{
+    background:#fff;color:var(--hk-tinta);
+    padding:11px 22px;border-radius:999px;
+    font-weight:600;font-size:.95rem;
+    box-shadow:0 4px 0 rgba(21,34,74,.14);
+    transition:transform 260ms var(--ease-out);
+  }
+  @media (hover:hover) and (pointer:fine){ .hk-etapa:hover{transform:translateY(-4px);} }
+
+  /* Tarjetas grandes de experiencia. */
+  .hk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:64px;}
+  @media (max-width:900px){ .hk-grid{grid-template-columns:1fr;gap:18px;margin-top:44px;} }
+  .hk-card{
+    background:var(--hk-crema);border-radius:34px;
+    padding:38px 32px 34px;
+    display:flex;flex-direction:column;gap:16px;
+    box-shadow:0 8px 0 rgba(21,34,74,.13);
+    transition:transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
+  }
+  .hk-card .hk-ico{width:78px;height:78px;display:block;}
+  .hk-card h3{
+    font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:1.7rem;line-height:1;letter-spacing:-.01em;
+  }
+  .hk-card p{font-size:1rem;line-height:1.5;font-weight:400;}
+  .hk-card .hk-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto;padding-top:6px;}
+  .hk-tag{
+    font-size:.78rem;font-weight:600;padding:6px 12px;border-radius:999px;
+    background:rgba(21,34,74,.09);
+  }
+  .hk-card:nth-child(1) h3{color:var(--hk-indigo-txt);}
+  .hk-card:nth-child(2) h3{color:var(--hk-turquesa-txt);}
+  .hk-card:nth-child(3) h3{color:var(--hk-violeta-txt);}
+  @media (hover:hover) and (pointer:fine){
+    .hk-card:hover{transform:translateY(-8px);box-shadow:0 16px 0 rgba(21,34,74,.13);}
+    .hk-card:hover .hk-ico{animation:hk-brinca .7s var(--ease-out);}
+  }
+  @keyframes hk-brinca{
+    0%,100%{transform:translateY(0) rotate(0);}
+    35%{transform:translateY(-10px) rotate(-7deg);}
+    70%{transform:translateY(0) rotate(4deg);}
+  }
+
+  /* Espacios: dos tarjetas con hueco de foto. */
+  .hk-espacios{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
+  @media (max-width:900px){ .hk-espacios{grid-template-columns:1fr;gap:18px;} }
+  .hk-espacio{
+    background:#fff;border-radius:34px;overflow:hidden;
+    box-shadow:0 8px 0 rgba(21,34,74,.13);
+    display:flex;flex-direction:column;
+  }
+  .hk-espacio-foto{
+    aspect-ratio:16/10;background:var(--hk-crema);
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:20px;
+  }
+  .hk-espacio-foto img{width:100%;height:100%;object-fit:cover;}
+  .hk-espacio-foto span{font-size:.8rem;color:rgba(21,34,74,.5);font-weight:500;}
+  .hk-espacio-txt{padding:26px 28px 30px;}
+  .hk-espacio-txt h4{
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.35rem;
+    line-height:1.05;margin-bottom:8px;color:var(--hk-indigo-txt);
+  }
+  .hk-espacio-txt p{font-size:.96rem;line-height:1.5;}
+
+  /* Cierre emocional y llamado a la acción. */
+  .hk-cierre{
+    margin-top:64px;background:var(--hk-indigo);color:#fff;
+    border-radius:40px;padding:56px 44px;text-align:center;
+  }
+  @media (max-width:860px){ .hk-cierre{padding:40px 24px;border-radius:28px;margin-top:44px;} }
+  .hk-cierre h3{
+    font-family:'Fredoka',sans-serif;font-weight:600;
+    font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1;margin-bottom:16px;
+  }
+  .hk-cierre p{font-size:1.1rem;max-width:44ch;margin:0 auto 30px;font-weight:400;}
+  .hk-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .hk-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:1rem;
+    padding:16px 30px;border-radius:999px;
+    transition:transform 200ms var(--ease-out);
+  }
+  .hk-btn svg{width:19px;height:19px;}
+  .hk-btn-sol{background:var(--hk-sol);color:var(--hk-tinta);box-shadow:0 5px 0 #B8830F;}
+  .hk-btn-linea{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.65);}
+  .hk-btn:active{transform:translateY(3px);}
+  @media (hover:hover) and (pointer:fine){
+    .hk-btn-sol:hover{transform:translateY(-3px);}
+    .hk-btn-linea:hover{background:rgba(255,255,255,.14);}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hk-etapa, .hk-card, .hk-btn{transition:none;}
+    .hk-etapa:hover, .hk-card:hover, .hk-btn:hover, .hk-btn:active{transform:none;}
+    .hk-card:hover .hk-ico{animation:none;}
+  }
+
   .oferta{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
   @media (max-width:860px){ .oferta{grid-template-columns:1fr;gap:44px;} }
   .oferta-col > h3{color:var(--marca-txt);margin-bottom:4px;}
@@ -376,7 +601,9 @@
   }
 
   /* ---------- ADMISIÓN ---------- */
-  .pasos{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--marca-txt);}
+  /* Tres pasos, los que el colegio define de verdad: formulario, prueba y
+     entrevista. Antes eran cuatro genéricos que no decían nada. */
+  .pasos{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--marca-txt);}
   .paso{padding:34px 26px 8px 0;}
   .paso + .paso{border-left:1px solid var(--linea);padding-left:26px;}
   .paso .numeral{
@@ -385,6 +612,27 @@
   }
   .paso h3{font-size:1.1rem;margin-bottom:10px;color:var(--marca-txt);}
   .paso .prosa{font-size:.95rem;}
+
+  /* ---------- HORARIOS ---------- */
+  /* Panel en relieve. Sustituye la regla superior: la sombra ya separa el
+     bloque del resto, y sumar línea encima sería decir lo mismo dos veces. */
+  .horarios{
+    margin-top:56px;padding:34px 36px 32px;
+    background:var(--papel);box-shadow:var(--neu-alto);
+  }
+  @media (max-width:560px){ .horarios{padding:26px 22px 24px;} }
+  .horarios h3{font-size:1.1rem;color:var(--marca-txt);margin-bottom:20px;}
+  .horarios ul{border-top:1px solid var(--linea);max-width:640px;}
+  .horarios li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+    padding:14px 0;border-bottom:1px solid var(--linea);font-size:.95rem;
+  }
+  .horarios li span{color:var(--texto-suave);}
+  .horarios li b{font-family:var(--display);font-weight:700;white-space:nowrap;}
+  .horarios .prosa{margin-top:18px;font-size:.92rem;max-width:60ch;}
+  @media (max-width:520px){
+    .horarios li{flex-direction:column;gap:4px;}
+  }
   /* Cuatro columnas solo con ancho real; si no, cada línea rompe en dos palabras. */
   @media (max-width:1040px){
     .pasos{grid-template-columns:repeat(2,1fr);}
@@ -412,17 +660,42 @@
     text-transform:uppercase;letter-spacing:.12em;color:var(--texto-tenue);
   }
 
+  /* ---------- UBICACIÓN ---------- */
+  .ubicacion{margin-top:32px;}
+  .ubicacion iframe{
+    width:100%;height:260px;border:1px solid var(--linea);display:block;
+  }
+  .enlace-mapa{
+    display:inline-flex;align-items:center;gap:8px;margin-top:14px;
+    font-family:var(--display);font-size:.76rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.11em;color:var(--marca-txt);
+    border-bottom:1px solid var(--lavanda);padding-bottom:4px;
+    transition:gap 160ms var(--ease-out), border-color 160ms var(--ease);
+  }
+  .enlace-mapa svg{width:14px;height:14px;}
+  @media (hover: hover) and (pointer: fine){
+    .enlace-mapa:hover{gap:12px;border-color:var(--marca-txt);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .enlace-mapa{transition:border-color 160ms var(--ease);}
+    .enlace-mapa:hover{gap:8px;}
+  }
+
   form#lead-form{display:flex;flex-direction:column;gap:22px;}
   .campo{display:flex;flex-direction:column;gap:7px;}
   .campo label{
     font-family:var(--display);font-size:.74rem;font-weight:700;
     text-transform:uppercase;letter-spacing:.11em;color:var(--texto);
   }
+  /* Hundido: el campo se lee como un surco donde se escribe. El borde se
+     conserva a propósito, porque es lo que sostiene el contraste; la sombra
+     sola no basta como señal de que aquí se escribe. */
   .campo input, .campo select{
     padding:15px 14px;border-radius:0;border:1px solid var(--linea);
     font-family:var(--texto-fam);font-size:1rem;
     background:var(--papel);color:var(--texto);
-    transition:border-color 180ms var(--ease);
+    box-shadow:var(--neu-hundido);
+    transition:border-color 180ms var(--ease), box-shadow 180ms var(--ease);
   }
   .campo input::placeholder{color:var(--texto-tenue);opacity:1;}
   .campo input:focus, .campo select:focus{outline:2px solid var(--marca-txt);outline-offset:1px;border-color:var(--marca-txt);}
@@ -451,11 +724,20 @@
   }
 
   /* ---------- FAQ ---------- */
-  .faq-lista{border-top:1px solid var(--linea);max-width:900px;}
-  details{border-bottom:1px solid var(--linea);}
+  .faq-lista{max-width:900px;display:flex;flex-direction:column;gap:12px;}
+  /* Cada pregunta es una pieza en relieve; al abrirse se hunde. El gesto
+     físico refuerza el estado abierto además del signo, no en vez de él:
+     quien no percibe sombras sigue teniendo el + girado y aria-expanded. */
+  details{
+    background:var(--papel);box-shadow:var(--neu-bajo);
+    padding:0 24px;
+    transition:box-shadow 240ms var(--ease);
+  }
+  details[open]{box-shadow:var(--neu-hundido);}
+  @media (prefers-reduced-motion: reduce){ details{transition:none;} }
   summary{
     cursor:pointer;list-style:none;display:flex;justify-content:space-between;
-    align-items:center;gap:20px;padding:26px 0;
+    align-items:center;gap:20px;padding:24px 0;
     font-family:var(--display);font-weight:700;font-size:1.02rem;
     text-transform:uppercase;letter-spacing:-.005em;line-height:1.2;
   }
@@ -542,16 +824,16 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <!-- TODO FOTO 1/12, hero, horizontal 2400x1400px. Estudiantes del colegio
-       trabajando en los Laboratorios de I+D. Reemplazar el src del <img>. -->
+       trabajando en los Laboratorios de Química e Innovación. Reemplazar el src del <img>. -->
   <div class="hero-foto">
     <img src="fotos/01-hero.jpg" data-respaldo="https://picsum.photos/seed/humboldt-hero-laboratorio/2400/1400"
          alt="[ PLACEHOLDER, reemplazar por foto real de estudiantes del colegio ]"
          width="2400" height="1400" fetchpriority="high" decoding="async">
   </div>
   <div class="wrap">
-    <span class="rotulo">Admisión abierta</span>
-    <h1>Valores que forman. <em>Conocimiento que transforma.</em></h1>
-    <p class="prosa-lg">Admisiones abiertas desde Prejardín hasta grado 11. Acompañamos a cada familia durante todo el proceso.</p>
+    <span class="rotulo">Prejardín a grado 11</span>
+    <h1>Admisiones <em>abiertas</em></h1>
+    <p class="prosa-lg">Valores que forman, conocimiento que transforma. Acompañamos a cada familia durante todo el proceso.</p>
     <div class="hero-ctas">
       <a href="#" class="btn btn-claro wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
@@ -569,9 +851,12 @@
       <b>Prejardín a 11°</b>
       <span>Todos los niveles en un solo colegio</span>
     </div>
+    <!-- Es el puesto del colegio, no un logro de estudiantes sueltos. La
+         distinción importa: un ranking institucional le dice al acudiente
+         cómo le irá a SU hijo; "estudiantes destacados" no dice nada. -->
     <div class="cifra rv">
-      <b>ICFES</b>
-      <span>Estudiantes destacados en las pruebas de Estado</span>
+      <b>2° en la ciudad</b>
+      <span>en pruebas ICFES, y entre los cinco mejores los últimos años</span>
     </div>
     <!-- El 6 sale de los deportes que nombró el colegio: fútbol de salón,
          voleibol, baloncesto, ajedrez, tenis de mesa y natación. Dijeron
@@ -593,7 +878,7 @@
     <div class="pilares cascada">
       <div class="pilar pilar-ancho rv">
         <!-- TODO FOTO 2/12, 1600x900px. Estudiantes construyendo o probando un
-             proyecto de los Laboratorios de I+D. -->
+             proyecto de los Laboratorios de Química e Innovación. -->
         <div class="pilar-figura">
           <img src="fotos/02-investigacion-desarrollo.jpg" data-respaldo="https://picsum.photos/seed/humboldt-investigacion-desarrollo/1600/900"
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="900" loading="lazy" decoding="async">
@@ -611,7 +896,7 @@
           <span class="numeral" aria-hidden="true">02</span>
         </div>
         <h3>Excelencia académica</h3>
-        <p class="prosa">Plan exigente y seguimiento personalizado. Nuestros estudiantes se destacan en pruebas ICFES y Olimpiadas Matemáticas.</p>
+        <p class="prosa">Plan exigente y seguimiento personalizado. El colegio está entre los mejores de la ciudad en pruebas ICFES, y participa en Olimpiadas Matemáticas.</p>
       </div>
 
       <div class="pilar rv">
@@ -631,41 +916,66 @@
 <!-- ============ NIVELES ============ -->
 <section id="niveles">
   <div class="wrap">
-    <div class="sec-head rv">
-      <h2>Un nivel para cada etapa</h2>
-      <p class="prosa">Hay cupos disponibles en todos los niveles. Escríbenos por el que te interesa y te contamos requisitos, documentos y costos.</p>
+    <div class="sec-head sec-head-masc rv">
+      <div>
+        <h2>Un nivel para cada etapa</h2>
+        <p class="prosa">Hay cupos disponibles en todos los niveles. Escríbenos por el que te interesa y te contamos requisitos, documentos y costos.</p>
+      </div>
+      <img class="mascota" src="fotos/mascota.png"
+           alt="León Humboldt, la mascota del colegio, con la bandera institucional"
+           width="443" height="520" loading="lazy" decoding="async">
     </div>
 
     <div class="niveles">
       <div class="nivel rv">
+        <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" fill="var(--amarillo)"/>
+          <circle cx="50" cy="50" r="30" fill="var(--tinta)"/>
+          <circle cx="50" cy="50" r="13" fill="var(--amarillo)"/>
+        </svg>
         <div class="nivel-txt">
-          <h3>Preescolar</h3>
+          <h3 style="color:var(--amarillo-txt);">Preescolar</h3>
           <span class="rango">Prejardín, Jardín y Transición</span>
           <p class="prosa">Exploración, lenguaje y desarrollo socioemocional.</p>
         </div>
         <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Preescolar (Prejardín, Jardín y Transición).">Preguntar</a>
       </div>
       <div class="nivel rv">
+        <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" fill="var(--turquesa)"/>
+          <path d="M0 100 A100 100 0 0 1 100 100 Z" fill="var(--tinta)"/>
+          <circle cx="50" cy="26" r="14" fill="var(--tinta)"/>
+        </svg>
         <div class="nivel-txt">
-          <h3>Primaria</h3>
+          <h3 style="color:var(--turquesa-txt);">Primaria</h3>
           <span class="rango">1° a 5° grado</span>
-          <p class="prosa">Fundamentos académicos y primer contacto con los Laboratorios de I+D.</p>
+          <p class="prosa">Fundamentos académicos y primer contacto con los Laboratorios de Química e Innovación.</p>
         </div>
         <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Primaria (1° a 5° grado).">Preguntar</a>
       </div>
       <div class="nivel rv">
+        <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" fill="var(--coral)"/>
+          <path d="M0 100 L100 100 L100 0 Z" fill="var(--tinta)"/>
+          <circle cx="28" cy="28" r="16" fill="var(--tinta)"/>
+        </svg>
         <div class="nivel-txt">
-          <h3>Secundaria</h3>
+          <h3 style="color:var(--coral-txt);">Secundaria</h3>
           <span class="rango">6° a 9° grado</span>
           <p class="prosa">Profundización académica y proyectos de investigación en el colegio.</p>
         </div>
         <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Secundaria (6° a 9° grado).">Preguntar</a>
       </div>
       <div class="nivel rv">
+        <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
+          <rect width="100" height="100" fill="var(--violeta)"/>
+          <path d="M0 100 V40 A50 50 0 0 1 100 40 V100 Z" fill="var(--tinta)"/>
+          <rect x="38" y="66" width="24" height="34" fill="var(--violeta)"/>
+        </svg>
         <div class="nivel-txt">
-          <h3>Media</h3>
+          <h3 style="color:var(--violeta-txt);">Media</h3>
           <span class="rango">10° y 11° grado</span>
-          <p class="prosa">Preparación universitaria y liderazgo de proyectos de I+D.</p>
+          <p class="prosa">Preparación universitaria y liderazgo de proyectos de innovación.</p>
         </div>
         <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Media (10° y 11° grado).">Preguntar</a>
       </div>
@@ -674,6 +984,128 @@
 </section>
 
 <!-- ============ LABORATORIOS ============ -->
+<!-- ============ PEQUEÑOS ============
+     Va justo después de niveles: el acudiente acaba de ver que hay Preescolar
+     y Primaria, y aquí se le cuenta cómo se viven. Puramente aditiva, no
+     reemplaza nada. -->
+<!-- ============ HUMBOLDT KIDS ============
+     Mundo visual propio: color, curva y tipografía redonda. Reemplaza la
+     antigua sección "Crecer jugando", que cubría lo mismo con menos.
+     Todo su estilo está encapsulado bajo .hk y no afecta al resto. -->
+<section id="humboldt-kids" class="hk">
+  <span class="hk-burbuja hk-b1" aria-hidden="true"></span>
+  <span class="hk-burbuja hk-b2" aria-hidden="true"></span>
+
+  <div class="wrap">
+    <h2 class="hk-titulo rv">Humboldt Kids</h2>
+    <p class="hk-lema rv">Donde aprender también es una aventura</p>
+
+    <div class="hk-etapas rv">
+      <span class="hk-etapa">Prejardín</span>
+      <span class="hk-etapa">Jardín</span>
+      <span class="hk-etapa">Transición</span>
+      <span class="hk-etapa">Primaria</span>
+    </div>
+
+    <div class="hk-grid cascada">
+      <article class="hk-card rv">
+        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="40" fill="var(--hk-indigo)"/>
+          <circle cx="36" cy="42" r="7" fill="#fff"/>
+          <circle cx="64" cy="42" r="7" fill="#fff"/>
+          <path d="M32 62 Q50 80 68 62" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3>Aprender jugando</h3>
+        <p>Exploran, construyen y se equivocan sin miedo. El juego es el método, no el recreo.</p>
+        <div class="hk-tags">
+          <span class="hk-tag">Lúdicas</span>
+          <span class="hk-tag">Arte</span>
+          <span class="hk-tag">Creatividad</span>
+        </div>
+      </article>
+
+      <article class="hk-card rv">
+        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="40" fill="var(--hk-turquesa)"/>
+          <path d="M50 18 L62 40 L50 50 L38 40 Z" fill="#fff"/>
+          <path d="M22 46 L38 40 L50 50 L44 72 Z" fill="#fff" opacity=".85"/>
+          <path d="M78 46 L62 40 L50 50 L56 72 Z" fill="#fff" opacity=".85"/>
+        </svg>
+        <h3>Deporte y fútbol de salón</h3>
+        <p>Equipos que compiten de verdad. Aprenden a ganar, a perder y a contar con el otro.</p>
+        <div class="hk-tags">
+          <span class="hk-tag">Trabajo en equipo</span>
+          <span class="hk-tag">Disciplina</span>
+          <span class="hk-tag">Amistad</span>
+        </div>
+      </article>
+
+      <article class="hk-card rv">
+        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="40" fill="var(--hk-violeta)"/>
+          <circle cx="38" cy="66" r="11" fill="#fff"/>
+          <circle cx="68" cy="58" r="9" fill="#fff"/>
+          <rect x="47" y="26" width="7" height="42" fill="#fff"/>
+          <rect x="72" y="26" width="7" height="34" fill="#fff"/>
+          <path d="M47 26 H79 V37 H47 Z" fill="#fff"/>
+        </svg>
+        <h3>Música y ritmo</h3>
+        <p>Piano, guitarra, batería y canto en un salón hecho para eso. Aquí descubren su talento.</p>
+        <div class="hk-tags">
+          <span class="hk-tag">Piano</span>
+          <span class="hk-tag">Guitarra</span>
+          <span class="hk-tag">Batería</span>
+          <span class="hk-tag">Canto</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="hk-espacios">
+      <!-- TODO FOTO 13/14, sala múltiple, horizontal 1600x1000px.
+           Niños en actividad, no el salón vacío. -->
+      <article class="hk-espacio rv">
+        <div class="hk-espacio-foto">
+          <img src="fotos/13-sala-multiple.jpg"
+               data-respaldo="https://picsum.photos/seed/humboldt-sala-multiple/1600/1000"
+               alt="[ PLACEHOLDER, reemplazar por foto real de la sala múltiple ]"
+               width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="hk-espacio-txt">
+          <h4>Sala múltiple</h4>
+          <p>Encuentros, celebraciones y actividades lúdicas. Cambia de forma según lo que toque ese día.</p>
+        </div>
+      </article>
+
+      <!-- TODO FOTO 14/14, salón de música, horizontal 1600x1000px.
+           Niños tocando instrumentos. -->
+      <article class="hk-espacio rv">
+        <div class="hk-espacio-foto">
+          <img src="fotos/14-salon-musica.jpg"
+               data-respaldo="https://picsum.photos/seed/humboldt-salon-musica/1600/1000"
+               alt="[ PLACEHOLDER, reemplazar por foto real del salón de música ]"
+               width="1600" height="1000" loading="lazy" decoding="async">
+        </div>
+        <div class="hk-espacio-txt">
+          <h4>Salón de música</h4>
+          <p>Instrumentos de verdad al alcance de los niños, con acompañamiento para empezar.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="hk-cierre rv">
+      <h3>Aquí empieza su historia</h3>
+      <p>Correr, crear, hacer amigos y descubrir de qué es capaz. Eso también se aprende.</p>
+      <div class="hk-ctas">
+        <a href="#" class="hk-btn hk-btn-sol wa" data-msg="Hola, quiero reservar un cupo para mi hijo en Humboldt Kids. ¿Me cuentan sobre el proceso?">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
+          Reserva su cupo
+        </a>
+        <a href="#niveles" class="hk-btn hk-btn-linea">Conoce nuestra propuesta</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="laboratorios" class="labs">
   <div class="wrap">
     <div class="rv">
@@ -749,30 +1181,37 @@
 <section id="admision">
   <div class="wrap">
     <div class="sec-head rv">
-      <h2>Cuatro pasos para matricular</h2>
+      <h2>Tres pasos para inscribirte</h2>
     </div>
 
     <div class="pasos cascada">
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">01</span>
-        <h3>Consulta la información</h3>
-        <p class="prosa">Requisitos, documentos, costos y condiciones del grado al que quieres ingresar.</p>
+        <h3>Formulario</h3>
+        <p class="prosa">Se compra el formulario, que tiene dos partes: una la diligencia el acudiente y otra el colegio actual del estudiante. Cuesta $70.000.</p>
       </div>
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">02</span>
-        <h3>Inicia el proceso</h3>
-        <p class="prosa">Diligencias el formulario y presentas la documentación solicitada.</p>
+        <h3>Prueba de admisión</h3>
+        <p class="prosa">Valida que los estudios cursados correspondan al grado al que el estudiante aspira ingresar.</p>
       </div>
       <div class="paso rv">
         <span class="numeral" aria-hidden="true">03</span>
-        <h3>Proceso del grado</h3>
-        <p class="prosa">Cada grado tiene su propio proceso. Nuestro equipo te acompaña en cada etapa.</p>
+        <h3>Entrevista</h3>
+        <p class="prosa">Una entrevista con Psicoorientación del colegio.</p>
       </div>
-      <div class="paso rv">
-        <span class="numeral" aria-hidden="true">04</span>
-        <h3>Reserva el cupo</h3>
-        <p class="prosa">Cumplidos los requisitos, avanzas a la reserva de cupo y la matrícula.</p>
-      </div>
+    </div>
+
+    <!-- Los horarios son de las primeras preguntas de un acudiente y definen
+         si el colegio le sirve. Van visibles, no escondidos en el FAQ. -->
+    <div class="horarios rv">
+      <h3>Horarios de jornada</h3>
+      <ul>
+        <li><span>Preescolar</span> <b>7:15 a.m. a 12:45 p.m.</b></li>
+        <li><span>Básica primaria</span> <b>6:45 a.m. a 12:45 p.m.</b></li>
+        <li><span>Básica secundaria y media vocacional</span> <b>6:15 a.m. a 1:30 p.m.</b></li>
+      </ul>
+      <p class="prosa">Las lúdicas se manejan dos o tres días a la semana y no son de carácter obligatorio.</p>
     </div>
 
     <p class="aviso aviso-seccion rv">
@@ -795,10 +1234,30 @@
           Escríbenos
         </a>
         <ul class="datos">
-          <li><b>Horario</b> <span>[ ... horario real de atención ]</span></li>
-          <li><b>Dirección</b> <span>[ ... dirección real del colegio ]</span></li>
-          <li><b>Correo</b> <span>[ ... correo real de admisiones ]</span></li>
+          <li><b>Dirección</b> <span>Calle 3 #7a-45, Sogamoso</span></li>
+          <li><b>WhatsApp</b> <span><a href="https://wa.me/573204581513" target="_blank" rel="noopener">320 458 1513</a></span></li>
+          <li><b>Llamadas</b> <span><a href="tel:+573108752661">310 875 2661</a></span></li>
+          <li><b>Fijo</b> <span><a href="tel:+5786770494">770 04 94</a></span></li>
         </ul>
+
+        <!-- La distancia al colegio es un factor de decisión real para un
+             acudiente. El mapa carga diferido: es un recurso externo pesado
+             y no puede retrasar el CTA de WhatsApp, que está más arriba. -->
+        <div class="ubicacion">
+          <iframe
+            src="https://www.google.com/maps?q=Calle+3+%237a-45,+Sogamoso,+Boyac%C3%A1,+Colombia&hl=es&z=16&output=embed"
+            title="Ubicación del Colegio Alejandro de Humboldt en Sogamoso"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="enlace-mapa"
+             href="https://www.google.com/maps/search/?api=1&query=Calle+3+%237a-45,+Sogamoso,+Boyac%C3%A1,+Colombia"
+             target="_blank" rel="noopener">
+            Cómo llegar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17 17 7M9 7h8v8"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
       <div>
@@ -843,7 +1302,7 @@
     <div class="faq-lista rv">
       <details>
         <summary>¿Cuál es el valor de la matrícula y la pensión?</summary>
-        <p class="prosa"><span class="pend">[ ... ]</span> Completar con los valores vigentes de matrícula y pensión por grado.</p>
+        <p class="prosa">Los valores de matrícula y pensión los regula la Secretaría de Educación, y el colegio los publica una vez quedan definidos para el año escolar. El formulario de inscripción sí tiene un costo fijo de $70.000. Escríbenos y te confirmamos los valores vigentes.</p>
       </details>
       <details>
         <summary>¿Hay cupos disponibles?</summary>
@@ -854,8 +1313,12 @@
         <p class="prosa"><span class="pend">[ ... ]</span> Detallar los requisitos y condiciones específicas de estos tres grados.</p>
       </details>
       <details>
-        <summary>¿Qué documentos necesito para matricular?</summary>
-        <p class="prosa"><span class="pend">[ ... ]</span> Listar los documentos exigidos por el colegio (registro civil, boletines, certificados, etc.).</p>
+        <summary>¿Qué necesito para iniciar la inscripción?</summary>
+        <p class="prosa">El formulario de inscripción, que se compra en el colegio. Tiene dos partes: una la diligencia el acudiente y la otra el colegio donde el estudiante cursa actualmente. Después siguen la prueba de admisión y la entrevista con Psicoorientación.</p>
+      </details>
+      <details>
+        <summary>¿Cuáles son los horarios de jornada?</summary>
+        <p class="prosa">Preescolar de 7:15 a.m. a 12:45 p.m., básica primaria de 6:45 a.m. a 12:45 p.m., y básica secundaria y media vocacional de 6:15 a.m. a 1:30 p.m. Las lúdicas son dos o tres días por semana y no son obligatorias.</p>
       </details>
       <details>
         <summary>¿Puedo matricular a mitad de año escolar?</summary>
@@ -876,9 +1339,10 @@
       <div>
         <h4>Contacto</h4>
         <ul>
-          <li>[ ... dirección real ]</li>
-          <li>[ ... correo real ]</li>
-          <li>[ ... horario real ]</li>
+          <li>Calle 3 #7a-45, Sogamoso</li>
+          <li>WhatsApp <a href="https://wa.me/573204581513" target="_blank" rel="noopener">320 458 1513</a></li>
+          <li>Llamadas <a href="tel:+573108752661">310 875 2661</a></li>
+          <li>Fijo <a href="tel:+5786770494">770 04 94</a></li>
         </ul>
       </div>
       <div>
@@ -904,7 +1368,10 @@
 
 <script>
   // ---- CONFIGURACIÓN, completar antes de lanzar ----
-  const TEL = '573108752661'; // 310 875 2661, con indicativo 57 y sin '+' ni espacios
+  // 320 458 1513 es la línea que responde WhatsApp. El 310 875 2661 es solo
+  // para llamadas y no va aquí: mandar un chat a un número que nadie lee en
+  // WhatsApp pierde el lead en silencio.
+  const TEL = '573204581513'; // con indicativo 57, sin '+' ni espacios
   const ENDPOINT = ''; // [ ... ] URL para guardar leads del formulario. Vacío = fallback a WhatsApp.
 
   // ---- Enlaces de WhatsApp automáticos (.wa + data-msg) ----

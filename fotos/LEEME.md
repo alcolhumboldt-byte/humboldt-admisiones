@@ -1,6 +1,6 @@
 # Fotos del colegio
 
-Aquí van las 12 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
+Aquí van las 14 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
 
 Mientras un archivo no exista, la página muestra en su lugar una foto de relleno de `picsum.photos`. Apenas dejes el archivo real con el nombre correcto, aparece solo.
 
@@ -20,6 +20,12 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 | `10-deportes.jpg` | Mosaico, celda ancha | 1800 × 900 | horizontal 2:1 |
 | `11-clase-ingles.jpg` | Mosaico | 900 × 900 | cuadrada |
 | `12-vida-escolar.jpg` | Mosaico | 900 × 900 | cuadrada |
+| `13-sala-multiple.jpg` | Humboldt Kids, espacios | 1600 × 1000 | horizontal |
+| `14-salon-musica.jpg` | Humboldt Kids, espacios | 1600 × 1000 | horizontal |
+
+Las dos últimas son de la sección Humboldt Kids. Ahí importa más que en
+ninguna otra parte que salgan **niños en actividad**, no el salón vacío:
+esa sección existe para que un papá imagine a su hijo adentro.
 
 ## Qué foto sirve y cuál no
 
