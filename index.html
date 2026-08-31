@@ -506,7 +506,15 @@
     box-shadow:0 8px 0 rgba(21,34,74,.13);
     transition:transform 300ms var(--ease-out), box-shadow 300ms var(--ease-out);
   }
-  .hk-card .hk-ico{width:78px;height:78px;display:block;}
+  /* Ilustraciones de undraw, ya en el índigo del logo. Tienen proporciones
+     distintas entre sí, así que se les da una caja de alto fijo y se ajustan
+     por dentro: así las tres tarjetas quedan alineadas aunque los dibujos no
+     midan lo mismo. */
+  .hk-card .hk-ilus{
+    width:100%;height:132px;display:block;
+    object-fit:contain;object-position:left center;
+  }
+  @media (max-width:900px){ .hk-card .hk-ilus{height:118px;} }
   .hk-card h3{
     font-family:'Fredoka',sans-serif;font-weight:600;
     font-size:1.7rem;line-height:1;letter-spacing:-.01em;
@@ -522,7 +530,7 @@
   .hk-card:nth-child(3) h3{color:var(--hk-violeta-txt);}
   @media (hover:hover) and (pointer:fine){
     .hk-card:hover{transform:translateY(-8px);box-shadow:0 16px 0 rgba(21,34,74,.13);}
-    .hk-card:hover .hk-ico{animation:hk-brinca .7s var(--ease-out);}
+    .hk-card:hover .hk-ilus{animation:hk-brinca .7s var(--ease-out);}
   }
   @keyframes hk-brinca{
     0%,100%{transform:translateY(0) rotate(0);}
@@ -582,7 +590,7 @@
   @media (prefers-reduced-motion: reduce){
     .hk-etapa, .hk-card, .hk-btn{transition:none;}
     .hk-etapa:hover, .hk-card:hover, .hk-btn:hover, .hk-btn:active{transform:none;}
-    .hk-card:hover .hk-ico{animation:none;}
+    .hk-card:hover .hk-ilus{animation:none;}
   }
 
   .oferta{display:grid;grid-template-columns:1fr 1fr;gap:64px;}
@@ -1017,12 +1025,7 @@
 
     <div class="hk-grid cascada">
       <article class="hk-card rv">
-        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="40" fill="var(--hk-indigo)"/>
-          <circle cx="36" cy="42" r="7" fill="#fff"/>
-          <circle cx="64" cy="42" r="7" fill="#fff"/>
-          <path d="M32 62 Q50 80 68 62" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
-        </svg>
+        <img class="hk-ilus" src="ilustraciones/explorar.svg" alt="Niños explorando el espacio, aprendiendo por descubrimiento" loading="lazy" decoding="async">
         <h3>Aprender jugando</h3>
         <p>Exploran, construyen y se equivocan sin miedo. El juego es el método, no el recreo.</p>
         <div class="hk-tags">
@@ -1033,12 +1036,7 @@
       </article>
 
       <article class="hk-card rv">
-        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="40" fill="var(--hk-turquesa)"/>
-          <path d="M50 18 L62 40 L50 50 L38 40 Z" fill="#fff"/>
-          <path d="M22 46 L38 40 L50 50 L44 72 Z" fill="#fff" opacity=".85"/>
-          <path d="M78 46 L62 40 L50 50 L56 72 Z" fill="#fff" opacity=".85"/>
-        </svg>
+        <img class="hk-ilus" src="ilustraciones/deporte.svg" alt="Niño jugando fútbol" loading="lazy" decoding="async">
         <h3>Deporte y fútbol de salón</h3>
         <p>Equipos que compiten de verdad. Aprenden a ganar, a perder y a contar con el otro.</p>
         <div class="hk-tags">
@@ -1049,14 +1047,7 @@
       </article>
 
       <article class="hk-card rv">
-        <svg class="hk-ico" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="40" fill="var(--hk-violeta)"/>
-          <circle cx="38" cy="66" r="11" fill="#fff"/>
-          <circle cx="68" cy="58" r="9" fill="#fff"/>
-          <rect x="47" y="26" width="7" height="42" fill="#fff"/>
-          <rect x="72" y="26" width="7" height="34" fill="#fff"/>
-          <path d="M47 26 H79 V37 H47 Z" fill="#fff"/>
-        </svg>
+        <img class="hk-ilus" src="ilustraciones/musica.svg" alt="Niña tocando música" loading="lazy" decoding="async">
         <h3>Música y ritmo</h3>
         <p>Piano, guitarra, batería y canto en un salón hecho para eso. Aquí descubren su talento.</p>
         <div class="hk-tags">
@@ -1499,6 +1490,10 @@
   // se muestra el placeholder de data-respaldo. Al subir la foto real,
   // aparece sola. Eliminar este bloque cuando estén las 12 fotos del colegio.
   function usarRespaldo(img){
+    // Se oculta ante el primer fallo, no solo al final de la cadena: si no,
+    // el texto alternativo queda a la vista los segundos que tarda el
+    // respaldo en agotarse, y ese texto dice "[ PLACEHOLDER ]".
+    img.style.visibility = 'hidden';
     if (img.dataset.respaldo && img.src !== img.dataset.respaldo) {
       img.src = img.dataset.respaldo;
       return;
@@ -1510,8 +1505,15 @@
   }
   document.querySelectorAll('img[data-respaldo]').forEach(img => {
     // Las que ya fallaron durante el parseo: complete en true y ancho 0.
+    // Sin { once: true }: hacen falta dos errores seguidos, uno por la foto
+    // real que no existe y otro por el respaldo. Con el listener de un solo
+    // uso, el segundo fallo no se atendía y quedaba a la vista el texto
+    // alternativo, que dice "[ PLACEHOLDER ]".
     if (img.complete && img.naturalWidth === 0) usarRespaldo(img);
-    else img.addEventListener('error', () => usarRespaldo(img), { once: true });
+    else img.addEventListener('error', () => usarRespaldo(img));
+    // Al cargar de verdad, se vuelve a mostrar. Así el ocultar de arriba no
+    // deja invisible una foto real que sí existía.
+    img.addEventListener('load', () => { img.style.visibility = ''; });
   });
 
   document.getElementById('anio').textContent = new Date().getFullYear();
