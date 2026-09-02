@@ -16,7 +16,8 @@ bd6cf46  Añade Humboldt Kids y corrige datos de admisiones
 
 Árbol limpio. **Nada de esto está en producción todavía.**
 
-- **Preview pública:** https://humboldt-admisiones-dcghssz1c-musiclimpics.vercel.app
+- **Preview pública:** https://humboldt-admisiones-aaupva8p4-musiclimpics.vercel.app
+  (cada `vercel --yes` crea una URL nueva; para la vigente, `vercel ls`)
 - **Producción:** https://humboldt-admisiones.vercel.app — sirve la versión vieja de `main`
 - **Repo:** https://github.com/alcolhumboldt-byte/humboldt-admisiones
 
