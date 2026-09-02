@@ -181,7 +181,7 @@ Usa ilustraciones de undraw en `ilustraciones/`, ya en el índigo del logo.
 - **Llamadas:** 310 875 2661 — **no** responde WhatsApp
 - **Fijo:** 770 04 94
 - **Sin correo de admisiones.** Todo va por WhatsApp, por decisión del colegio.
-- **Formulario de inscripción:** $70.000, dos partes, una la diligencia el
+- **Formulario de inscripción:** $75.000, dos partes, una la diligencia el
   acudiente y otra el colegio actual del estudiante
 - **Horarios:** Preescolar 7:15 a 12:45, primaria 6:45 a 12:45, secundaria y
   media 6:15 a 1:30. Lúdicas 2 o 3 días, no obligatorias.
