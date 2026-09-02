@@ -326,8 +326,8 @@
   }
 
   /* ---------- FORMACIÓN, tarjetas fotográficas con numeral calado ----------
-     Rejilla asimétrica: el pilar de laboratorios es el diferenciador y ocupa el campo
-     ancho. Evita la fila de tres tarjetas idénticas. */
+     Rejilla asimétrica: el campo ancho lo ocupa valores, que es el pilar
+     principal para el colegio. Evita la fila de tres tarjetas idénticas. */
   .pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
   .pilar{display:flex;flex-direction:column;}
   .pilar-ancho{grid-column:span 2;}
@@ -906,20 +906,21 @@
     </div>
 
     <div class="pilares cascada">
+      <!-- Valores encabeza y ocupa el campo ancho: es lo que el colegio
+           considera su pilar principal. -->
       <div class="pilar pilar-ancho rv">
-        <!-- TODO FOTO 2/12, 1600x900px. Estudiantes construyendo o probando un
-             proyecto de los Laboratorios de Investigación y Desarrollo. -->
+        <!-- TODO FOTO 4/14, 1600x900px. Vida escolar y convivencia. -->
         <div class="pilar-figura">
-          <img src="fotos/02-investigacion-desarrollo.jpg" data-respaldo="https://picsum.photos/seed/humboldt-investigacion-desarrollo/1600/900"
+          <img src="fotos/04-formacion-caracter.jpg" data-respaldo="https://picsum.photos/seed/humboldt-formacion-caracter/1600/900"
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">01</span>
         </div>
-        <h3>Ciencia, investigación e innovación</h3>
-        <p class="prosa">Laboratorios de Investigación y Desarrollo, robótica y tecnología. No solo estudian ciencia: la aplican.</p>
+        <h3>Formación en valores cristianos</h3>
+        <p class="prosa">El eje de todo lo demás. Acompañamiento en el carácter, dentro de un ambiente escolar positivo.</p>
       </div>
 
       <div class="pilar rv">
-        <!-- TODO FOTO 3/12, 1200x900px. Clase o trabajo académico. -->
+        <!-- TODO FOTO 3/14, 1200x900px. Clase o trabajo académico. -->
         <div class="pilar-figura">
           <img src="fotos/03-rigor-academico.jpg" data-respaldo="https://picsum.photos/seed/humboldt-rigor-academico/1200/900"
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
@@ -930,14 +931,15 @@
       </div>
 
       <div class="pilar rv">
-        <!-- TODO FOTO 4/12, 1200x900px. Vida escolar, convivencia. -->
+        <!-- TODO FOTO 2/14, 1200x900px. Estudiantes construyendo o probando un
+             proyecto de los Laboratorios de Investigación y Desarrollo. -->
         <div class="pilar-figura">
-          <img src="fotos/04-formacion-caracter.jpg" data-respaldo="https://picsum.photos/seed/humboldt-formacion-caracter/1200/900"
+          <img src="fotos/02-investigacion-desarrollo.jpg" data-respaldo="https://picsum.photos/seed/humboldt-investigacion-desarrollo/1200/900"
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1200" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">03</span>
         </div>
-        <h3>Formación en valores cristianos</h3>
-        <p class="prosa">Acompañamiento en el carácter, dentro de un ambiente escolar positivo.</p>
+        <h3>Ciencia, investigación e innovación</h3>
+        <p class="prosa">Laboratorios de Investigación y Desarrollo, robótica y tecnología. No solo estudian ciencia: la aplican.</p>
       </div>
     </div>
   </div>

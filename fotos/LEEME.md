@@ -4,14 +4,14 @@ Aquí van las 14 fotos de la landing. **Los nombres tienen que ser exactos**: el
 
 Mientras un archivo no exista, la página muestra en su lugar una foto de relleno de `picsum.photos`. Apenas dejes el archivo real con el nombre correcto, aparece solo.
 
-## Los 12 archivos
+## Los 14 archivos
 
 | Archivo | Dónde sale | Medida mínima | Forma |
 |---|---|---|---|
 | `01-hero.jpg` | Portada, a pantalla completa | 2400 × 1400 | horizontal |
-| `02-investigacion-desarrollo.jpg` | Formación, tarjeta grande | 1600 × 900 | horizontal |
+| `04-formacion-caracter.jpg` | Formación, tarjeta grande | 1600 × 900 | horizontal |
 | `03-rigor-academico.jpg` | Formación, tarjeta 02 | 1200 × 900 | horizontal |
-| `04-formacion-caracter.jpg` | Formación, tarjeta 03 | 1200 × 900 | horizontal |
+| `02-investigacion-desarrollo.jpg` | Formación, tarjeta 03 | 1200 × 900 | horizontal |
 | `05-patio-central.jpg` | Mosaico, celda grande | 1600 × 1600 | cuadrada |
 | `06-laboratorio-quimica.jpg` | Mosaico | 900 × 900 | cuadrada |
 | `07-aula-musica.jpg` | Mosaico | 900 × 900 | cuadrada |
