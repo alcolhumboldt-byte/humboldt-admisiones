@@ -80,7 +80,8 @@ toda la página.
 
 ## Estructura
 
-1. Nav sticky, 5 anclas y CTA. Colapsa a hamburguesa bajo 1020px.
+1. Nav sticky, 5 anclas y CTA. Colapsa a hamburguesa bajo 1140px. Las anclas
+   llevan `white-space:nowrap`: "Cómo inscribirse" partía en dos líneas.
 2. Hero: foto a sangre, titular "Admisiones abiertas", CTA WhatsApp
 3. Banda de 3 cifras sobre índigo
 4. `#formacion` — rejilla asimétrica de 3 tarjetas foto
@@ -88,8 +89,14 @@ toda la página.
    su color. La mascota preside la sección.
 6. `#humboldt-kids` — **mundo visual propio**, ver abajo
 7. `#laboratorios` — declaración grande sobre campo índigo
-8. `#instalaciones` — dos listas rayadas, bloque de logro, mosaico de fotos
-9. `#admision` — 3 pasos numerados + panel de horarios en relieve
+8. `#instalaciones` — dos listas rayadas, bloque de logro, mosaico de fotos.
+   El mosaico arranca con `.colapsada`: muestra 4 y el botón "Ver más fotos"
+   revela las 8. Ocho fotos seguidas empujaban demasiado abajo la sección que
+   convierte. Al colapsar hay que neutralizar el tramo 2x2 de la primera foto
+   o la retícula queda con un hueco.
+9. `#proceso` — 3 pasos numerados + panel de horarios en relieve.
+   El id es `proceso`, no `admision`: lo apuntan el nav, el footer y el
+   segundo botón del hero.
 10. `#contacto` — CTA WhatsApp, datos, mapa, formulario de 3 campos
 11. `#faq` — acordeón
 12. Footer índigo + botón WhatsApp flotante
@@ -110,9 +117,13 @@ Usa ilustraciones de undraw en `ilustraciones/`, ya en el índigo del logo.
 
 ## Convenciones del código
 
-- Todo elemento con clase `.wa` recibe el link de WhatsApp automáticamente.
-  El texto prellenado sale de `data-msg`. Para un CTA nuevo:
-  `<a href="#" class="wa" data-msg="...">`
+- **WhatsApp centralizado.** El número y todos los textos viven en el objeto
+  `WHATSAPP` del script. El HTML solo lleva la clave: `data-wa="primaria"`.
+  Nunca poner el número ni el mensaje en el marcado. Para un CTA nuevo:
+  `<a href="#" class="wa" data-wa="general">`, y si necesita un texto propio,
+  se agrega una clave al objeto. El script escribe `href`, `target`, `rel` y
+  un `aria-label` con el mensaje, porque "Preguntar" fuera de contexto no
+  dice a dónde lleva.
 - Variables CSS en `:root`. No hardcodear colores.
 - `.rv` = aparición al hacer scroll (IntersectionObserver). `.cascada` en el
   contenedor escalona los hijos.
@@ -181,8 +192,10 @@ Usa ilustraciones de undraw en `ilustraciones/`, ya en el índigo del logo.
 ## Decisiones ya tomadas, no rediscutir
 
 - WhatsApp es la acción principal, no el formulario.
-- El área de tecnología se vende como **Laboratorios de Química e Innovación**,
-  nunca como "clase de sistemas". Se vende el método, no el producto.
+- El área de tecnología se llama **Laboratorios de Investigación y Desarrollo**
+  en toda la página, nunca "sala de sistemas" ni "clase de sistemas". Se vende
+  el método, no el producto. (Se probó "Laboratorios de Química e Innovación"
+  y se descartó el 31 ago 2026.)
 - Sin CMS. El contenido se edita directo en el HTML.
 - Nombre oficial: **Colegio Alejandro de Humboldt**, con "de".
 - La página es siempre clara. Sin modo oscuro.

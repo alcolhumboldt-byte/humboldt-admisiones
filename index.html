@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colegio Alejandro de Humboldt | Admisiones</title>
-<meta name="description" content="Admisiones abiertas desde Prejardín hasta grado 11. Formación en valores cristianos, excelencia académica y Laboratorios de Química e Innovación. Reserva el cupo de tu hijo.">
+<meta name="description" content="Admisiones abiertas desde Prejardín hasta grado 11. Formación en valores cristianos, excelencia académica y Laboratorios de Investigación y Desarrollo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Fredoka:wght@500;600&family=Shantell+Sans:wght@700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
@@ -194,6 +194,9 @@
   .nav-links a{
     font-family:var(--display);font-size:.74rem;font-weight:600;
     text-transform:uppercase;letter-spacing:.1em;color:var(--texto-suave);
+    /* Un ancla del nav nunca parte en dos líneas: "Cómo inscribirse" se
+       rompía y desalineaba toda la barra. */
+    white-space:nowrap;
     transition:color 150ms var(--ease);
   }
   @media (hover: hover) and (pointer: fine){ .nav-links a:hover{color:var(--marca-txt);} }
@@ -422,6 +425,14 @@
   .mosaico figure{position:relative;overflow:hidden;background:var(--papel-alt);margin:0;aspect-ratio:1/1;}
   .mosaico figure:nth-child(1){grid-column:span 2;grid-row:span 2;}
   .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:2/1;}
+  /* Colapsada por defecto: 8 fotos seguidas justo antes de la sección que
+     convierte empujan el CTA demasiado abajo. Se muestran 4 y el resto queda
+     tras un botón.
+     La primera ocupa 2x2, así que al colapsar hay que neutralizar ese tramo:
+     con el span puesto, cuatro fotos dejan un hueco en la retícula. */
+  .mosaico.colapsada figure:nth-child(n+5){display:none;}
+  .mosaico.colapsada figure:nth-child(1){grid-column:auto;grid-row:auto;aspect-ratio:1/1;}
+  .mosaico-mas{display:flex;justify-content:center;margin-top:20px;}
   .mosaico img{width:100%;height:100%;object-fit:cover;transition:transform 800ms var(--ease-out);}
   @media (hover: hover) and (pointer: fine){
     .mosaico figure:hover img{transform:scale(1.05);}
@@ -434,6 +445,9 @@
     .mosaico{grid-template-columns:repeat(2,1fr);gap:4px;margin-top:44px;}
     .mosaico figure:nth-child(1){grid-column:span 2;grid-row:span 1;aspect-ratio:16/10;}
     .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:16/10;}
+    /* En 2 columnas la primera ocupa la fila entera; colapsada vuelve a
+       cuadrada para que las 4 formen un 2x2 parejo. */
+    .mosaico.colapsada figure:nth-child(1){grid-column:auto;aspect-ratio:1/1;}
   }
 
   /* ================= HUMBLE KIDS =================
@@ -828,10 +842,10 @@
       <li><a href="#niveles">Niveles</a></li>
       <li><a href="#laboratorios">Laboratorios</a></li>
       <li><a href="#instalaciones">Instalaciones</a></li>
-      <li><a href="#admision">Admisión</a></li>
+      <li><a href="#proceso">Cómo inscribirse</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#" class="btn btn-solido btn-sm wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">Reserva tu cupo</a>
+      <a href="#" class="btn btn-solido btn-sm wa" data-wa="general">Reserva tu cupo</a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span></button>
     </div>
   </div>
@@ -840,7 +854,7 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <!-- TODO FOTO 1/12, hero, horizontal 2400x1400px. Estudiantes del colegio
-       trabajando en los Laboratorios de Química e Innovación. Reemplazar el src del <img>. -->
+       trabajando en los Laboratorios de Investigación y Desarrollo. Reemplazar el src del <img>. -->
   <div class="hero-foto">
     <img src="fotos/01-hero.jpg" data-respaldo="https://picsum.photos/seed/humboldt-hero-laboratorio/2400/1400"
          alt="[ PLACEHOLDER, reemplazar por foto real de estudiantes del colegio ]"
@@ -851,11 +865,11 @@
     <h1>Admisiones <em>abiertas</em></h1>
     <p class="prosa-lg">Valores que forman, conocimiento que transforma. Acompañamos a cada familia durante todo el proceso.</p>
     <div class="hero-ctas">
-      <a href="#" class="btn btn-claro wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">
+      <a href="#" class="btn btn-claro wa" data-wa="general">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
         Reserva tu cupo
       </a>
-      <a href="#niveles" class="btn btn-claro" style="background:transparent;border-color:rgba(255,255,255,.75);color:#FFFFFF;">Ver niveles</a>
+      <a href="#proceso" class="btn btn-claro" style="background:transparent;border-color:rgba(255,255,255,.75);color:#FFFFFF;">Cómo es el proceso</a>
     </div>
   </div>
 </header>
@@ -894,14 +908,14 @@
     <div class="pilares cascada">
       <div class="pilar pilar-ancho rv">
         <!-- TODO FOTO 2/12, 1600x900px. Estudiantes construyendo o probando un
-             proyecto de los Laboratorios de Química e Innovación. -->
+             proyecto de los Laboratorios de Investigación y Desarrollo. -->
         <div class="pilar-figura">
           <img src="fotos/02-investigacion-desarrollo.jpg" data-respaldo="https://picsum.photos/seed/humboldt-investigacion-desarrollo/1600/900"
                alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="900" loading="lazy" decoding="async">
           <span class="numeral" aria-hidden="true">01</span>
         </div>
         <h3>Ciencia, investigación e innovación</h3>
-        <p class="prosa">Laboratorios de Química e Innovación, robótica y tecnología. No solo estudian ciencia: la aplican.</p>
+        <p class="prosa">Laboratorios de Investigación y Desarrollo, robótica y tecnología. No solo estudian ciencia: la aplican.</p>
       </div>
 
       <div class="pilar rv">
@@ -954,7 +968,7 @@
           <span class="rango">Prejardín, Jardín y Transición</span>
           <p class="prosa">Exploración, lenguaje y desarrollo socioemocional.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Preescolar (Prejardín, Jardín y Transición).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-wa="preescolar">Preguntar</a>
       </div>
       <div class="nivel rv">
         <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
@@ -965,9 +979,9 @@
         <div class="nivel-txt">
           <h3 style="color:var(--turquesa-txt);">Primaria</h3>
           <span class="rango">1° a 5° grado</span>
-          <p class="prosa">Fundamentos académicos y primer contacto con los Laboratorios de Química e Innovación.</p>
+          <p class="prosa">Fundamentos académicos y primer contacto con los Laboratorios de Investigación y Desarrollo.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Primaria (1° a 5° grado).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-wa="primaria">Preguntar</a>
       </div>
       <div class="nivel rv">
         <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
@@ -980,7 +994,7 @@
           <span class="rango">6° a 9° grado</span>
           <p class="prosa">Profundización académica y proyectos de investigación en el colegio.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Secundaria (6° a 9° grado).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-wa="secundaria">Preguntar</a>
       </div>
       <div class="nivel rv">
         <svg class="nivel-marca" viewBox="0 0 100 100" aria-hidden="true">
@@ -993,7 +1007,7 @@
           <span class="rango">10° y 11° grado</span>
           <p class="prosa">Preparación universitaria y liderazgo de proyectos de innovación.</p>
         </div>
-        <a href="#" class="btn btn-linea btn-sm wa" data-msg="Hola, quiero información sobre el nivel de Media (10° y 11° grado).">Preguntar</a>
+        <a href="#" class="btn btn-linea btn-sm wa" data-wa="media">Preguntar</a>
       </div>
     </div>
   </div>
@@ -1095,7 +1109,7 @@
       <h3>Aquí empieza su historia</h3>
       <p>Correr, crear, hacer amigos y descubrir de qué es capaz. Eso también se aprende.</p>
       <div class="hk-ctas">
-        <a href="#" class="hk-btn hk-btn-sol wa" data-msg="Hola, quiero reservar un cupo para mi hijo en Humboldt Kids. ¿Me cuentan sobre el proceso?">
+        <a href="#" class="hk-btn hk-btn-sol wa" data-wa="kids">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
           Reserva su cupo
         </a>
@@ -1116,7 +1130,7 @@
     </div>
 
     <div class="labs-cta rv">
-      <a href="#" class="btn btn-solido wa" data-msg="Hola, vi los Laboratorios de Química e Innovación y quiero reservar un cupo.">
+      <a href="#" class="btn btn-solido wa" data-wa="laboratorios">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
         Reserva tu cupo
       </a>
@@ -1135,8 +1149,7 @@
       <div class="oferta-col">
         <h3>Espacios</h3>
         <ul class="lista-rayada">
-          <li>Laboratorios de Química e Innovación</li>
-          <li>Sala de sistemas</li>
+          <li>Laboratorios de Investigación y Desarrollo</li>
           <li>Biblioteca y aula múltiple</li>
           <li>Música y espacios especializados</li>
         </ul>
@@ -1164,7 +1177,7 @@
        La primera es la grande (1600x1600). Las demás, 900x900.
        Esta sección es la que más pesa para un acudiente que aún no ha
        visitado: son las fotos que hacen creíble todo lo anterior. -->
-  <div class="mosaico rv" role="group" aria-label="Instalaciones y vida escolar del colegio">
+  <div class="mosaico colapsada rv" id="mosaico" role="group" aria-label="Instalaciones y vida escolar del colegio">
     <figure><img src="fotos/05-patio-central.jpg" data-respaldo="https://picsum.photos/seed/humboldt-patio-central/1600/1600" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="1600" height="1600" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/06-laboratorio-quimica.jpg" data-respaldo="https://picsum.photos/seed/humboldt-laboratorio-quimica/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/07-aula-musica.jpg" data-respaldo="https://picsum.photos/seed/humboldt-aula-musica/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
@@ -1174,10 +1187,15 @@
     <figure><img src="fotos/11-clase-ingles.jpg" data-respaldo="https://picsum.photos/seed/humboldt-clase-ingles/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/12-vida-escolar.jpg" data-respaldo="https://picsum.photos/seed/humboldt-vida-escolar/900/900" alt="[ PLACEHOLDER, reemplazar por foto real ]" width="900" height="900" loading="lazy" decoding="async"></figure>
   </div>
+
+  <div class="wrap mosaico-mas">
+    <button type="button" class="btn btn-linea" id="ver-mas-fotos"
+            aria-expanded="false" aria-controls="mosaico">Ver más fotos</button>
+  </div>
 </section>
 
 <!-- ============ ADMISIÓN ============ -->
-<section id="admision">
+<section id="proceso">
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Tres pasos para inscribirte</h2>
@@ -1228,7 +1246,7 @@
         <span class="rotulo">Contacto</span>
         <h2>Hablemos de tu proceso de admisión</h2>
         <p class="prosa">Lo más rápido es WhatsApp. Fuera de horario, déjanos tus datos y te contactamos apenas abramos.</p>
-        <a href="#" class="btn btn-solido wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?">
+        <a href="#" class="btn btn-solido wa" data-wa="general">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
           Escríbenos
         </a>
@@ -1350,7 +1368,7 @@
           <li><a href="#formacion">Formación</a></li>
           <li><a href="#niveles">Niveles</a></li>
           <li><a href="#laboratorios">Laboratorios</a></li>
-          <li><a href="#admision">Admisión</a></li>
+          <li><a href="#proceso">Cómo inscribirse</a></li>
         </ul>
       </div>
     </div>
@@ -1361,27 +1379,48 @@
   </div>
 </footer>
 
-<a href="#" class="wa-flotante wa" data-msg="Hola, quiero reservar un cupo. ¿Me cuentan sobre el proceso de admisión?" aria-label="Reserva tu cupo por WhatsApp">
+<a href="#" class="wa-flotante wa" data-wa="general" aria-label="Reserva tu cupo por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.71.45 3.38 1.3 4.85L2 22l5.36-1.4a9.9 9.9 0 0 0 4.68 1.19h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.19 0 4.25.85 5.8 2.4a8.2 8.2 0 0 1 2.4 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.18.83.85-3.1-.2-.32a8.18 8.18 0 0 1-1.27-4.38c0-4.55 3.7-8.24 8.24-8.24Zm-3.8 4.4c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.03s.87 2.35.99 2.52c.12.16 1.7 2.6 4.13 3.55.58.23 1.03.36 1.38.46.58.17 1.11.15 1.53.09.47-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.28-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.55.12-.16.24-.63.78-.77.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.93-1.19-.71-.63-1.19-1.42-1.33-1.66-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.42-.55-.42Z"/></svg>
 </a>
 
 <script>
-  // ---- CONFIGURACIÓN, completar antes de lanzar ----
+  // ---- CONFIGURACIÓN DE WHATSAPP ----
+  // Único lugar donde viven el número y los textos. El HTML solo lleva la
+  // clave (data-wa), nunca el número ni el mensaje: así cambiar la línea o
+  // reescribir un texto es una edición en un sitio, no diez.
+  //
   // 320 458 1513 es la línea que responde WhatsApp. El 310 875 2661 es solo
-  // para llamadas y no va aquí: mandar un chat a un número que nadie lee en
-  // WhatsApp pierde el lead en silencio.
-  const TEL = '573204581513'; // con indicativo 57, sin '+' ni espacios
+  // para llamadas y no va aquí: mandar un chat a un número que nadie lee
+  // pierde el lead en silencio.
+  const WHATSAPP = {
+    numero: '573204581513', // con indicativo 57, sin '+' ni espacios
+    mensajes: {
+      general:      'Hola, quiero información de admisiones. ¿Me cuentan sobre el proceso?',
+      preescolar:   'Hola, quiero información de admisiones para Preescolar (Prejardín, Jardín y Transición)',
+      primaria:     'Hola, quiero información de admisiones para Primaria (1° a 5°)',
+      secundaria:   'Hola, quiero información de admisiones para Secundaria (6° a 9°)',
+      media:        'Hola, quiero información de admisiones para Media (10° y 11°)',
+      kids:         'Hola, quiero información de admisiones para mi hijo en Humboldt Kids',
+      laboratorios: 'Hola, vi los Laboratorios de Investigación y Desarrollo y quiero información de admisiones',
+    },
+  };
   const ENDPOINT = ''; // [ ... ] URL para guardar leads del formulario. Vacío = fallback a WhatsApp.
 
-  // ---- Enlaces de WhatsApp automáticos (.wa + data-msg) ----
+  // ---- Enlaces de WhatsApp automáticos (.wa + data-wa) ----
   function linkWhatsApp(mensaje){
-    const base = TEL ? `https://wa.me/${TEL}` : 'https://wa.me/';
+    const base = `https://wa.me/${WHATSAPP.numero}`;
     return mensaje ? `${base}?text=${encodeURIComponent(mensaje)}` : base;
   }
   document.querySelectorAll('.wa').forEach(el => {
-    el.setAttribute('href', linkWhatsApp(el.dataset.msg || ''));
+    const mensaje = WHATSAPP.mensajes[el.dataset.wa] || WHATSAPP.mensajes.general;
+    el.setAttribute('href', linkWhatsApp(mensaje));
     el.setAttribute('target', '_blank');
     el.setAttribute('rel', 'noopener');
+    // El texto visible suele ser "Preguntar" o "Reserva tu cupo", que fuera
+    // de contexto no dice a dónde lleva ni de qué nivel habla.
+    if (!el.hasAttribute('aria-label')) {
+      el.setAttribute('aria-label', `Escribir por WhatsApp: ${mensaje}`);
+    }
   });
 
   // ---- Nav: regla inferior al despegar del tope ----
@@ -1420,6 +1459,22 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     elementosRv.forEach(el => observador.observe(el));
+  }
+
+  // ---- Galería: mostrar las 4 fotos restantes ----
+  // Una vez abierta no se vuelve a cerrar: quien pidió ver más no quiere que
+  // el contenido le desaparezca debajo del cursor. El botón se retira.
+  const botonMasFotos = document.getElementById('ver-mas-fotos');
+  const mosaico = document.getElementById('mosaico');
+  if (botonMasFotos && mosaico) {
+    botonMasFotos.addEventListener('click', () => {
+      mosaico.classList.remove('colapsada');
+      botonMasFotos.setAttribute('aria-expanded', 'true');
+      botonMasFotos.parentElement.remove();
+      // El foco no puede quedar en un botón que acaba de dejar de existir.
+      mosaico.setAttribute('tabindex', '-1');
+      mosaico.focus({ preventScroll: true });
+    });
   }
 
   // ---- Formulario de contacto ----
