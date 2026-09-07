@@ -1479,6 +1479,19 @@
     });
   }
 
+  // ---- Medición de clics en WhatsApp ----
+  // Las visitas las cuenta Vercel Analytics solo. Esto añade lo que de
+  // verdad importa en esta página: cuántos acudientes pulsan un CTA y por
+  // cuál nivel preguntan. Sin eso solo se sabe que entró gente, no si el
+  // sitio está sirviendo para algo.
+  document.querySelectorAll('.wa').forEach(el => {
+    el.addEventListener('click', () => {
+      if (window.va) {
+        window.va('event', { name: 'whatsapp', data: { origen: el.dataset.wa || 'general' } });
+      }
+    });
+  });
+
   // ---- Formulario de contacto ----
   const form = document.getElementById('lead-form');
   const formMsg = document.getElementById('form-msg');
@@ -1575,5 +1588,9 @@
 
   document.getElementById('anio').textContent = new Date().getFullYear();
 </script>
+<!-- Vercel Web Analytics. Cuenta visitas sin cookies y sin recoger datos
+     personales, así que no obliga a poner aviso de consentimiento. Se carga
+     al final y en diferido: nunca debe retrasar el CTA de WhatsApp. -->
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
