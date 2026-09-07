@@ -6,22 +6,28 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 
 ## Los 14 archivos
 
-| Archivo | Dónde sale | Medida mínima | Forma |
+| Archivo | Dónde sale | Medida | Estado |
 |---|---|---|---|
-| `01-hero.jpg` | Portada, a pantalla completa | 2400 × 1400 | horizontal |
-| `04-formacion-caracter.jpg` | Formación, tarjeta grande | 1600 × 900 | horizontal |
-| `03-rigor-academico.jpg` | Formación, tarjeta 02 | 1200 × 900 | horizontal |
-| `02-investigacion-desarrollo.jpg` | Formación, tarjeta 03 | 1200 × 900 | horizontal |
-| `05-patio-central.jpg` | Mosaico, celda grande | 1600 × 1600 | cuadrada |
-| `06-laboratorio-quimica.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `07-aula-musica.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `08-biblioteca.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `09-sala-informatica.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `10-deportes.jpg` | Mosaico, celda ancha | 1800 × 900 | horizontal 2:1 |
-| `11-clase-ingles.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `12-vida-escolar.jpg` | Mosaico | 900 × 900 | cuadrada |
-| `13-sala-multiple.jpg` | Humboldt Kids, espacios | 1600 × 1000 | horizontal |
-| `14-salon-musica.jpg` | Humboldt Kids, espacios | 1600 × 1000 | horizontal |
+| `01-hero.jpg` | Portada, pantalla completa | 2400 × 1400 | listo |
+| `04-formacion-caracter.jpg` | Formación, tarjeta grande | 1600 × 900 | listo |
+| `03-rigor-academico.jpg` | Formación, tarjeta 02 | 1200 × 900 | listo |
+| `02-investigacion-desarrollo.jpg` | Formación, tarjeta 03 | 1200 × 900 | listo |
+| `05-patio-central.jpg` | Mosaico, celda grande | 1600 × 1600 | listo |
+| `06-sala-computo.jpg` | Mosaico | 900 × 900 | listo |
+| `07-recreo.jpg` | Mosaico | 900 × 900 | listo |
+| `08-biblioteca.jpg` | Mosaico | 900 × 900 | listo |
+| `09-preescolar.jpg` | Mosaico | 900 × 900 | listo |
+| `10-deportes.jpg` | Mosaico, celda ancha | 1800 × 900 | listo |
+| `11-juego-libre.jpg` | Mosaico | 900 × 900 | listo |
+| `12-vida-escolar.jpg` | Mosaico | 900 × 900 | listo |
+| `13-sala-multiple.jpg` | Humboldt Kids | 1600 × 1000 | listo |
+| `14-salon-musica.jpg` | Humboldt Kids | 1600 × 1000 | **FALTA** |
+
+Los originales están en `~/Desktop/fotos humboldt/`. Se recortaron al centro
+según la proporción de cada slot y se comprimieron por debajo de 300 KB.
+
+**Falta una sola foto: el salón de música.** Hoy ese hueco muestra una imagen
+de stock. Hace falta una horizontal, con niños tocando instrumentos.
 
 Las dos últimas son de la sección Humboldt Kids. Ahí importa más que en
 ninguna otra parte que salgan **niños en actividad**, no el salón vacío:
