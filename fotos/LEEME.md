@@ -14,7 +14,7 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 | `02-investigacion-desarrollo.jpg` | Formación, tarjeta 03 | 1200 × 900 | listo |
 | `05-patio-central.jpg` | Mosaico, celda grande | 1600 × 1600 | listo |
 | `06-sala-computo.jpg` | Mosaico | 900 × 900 | listo |
-| `07-recreo.jpg` | Mosaico | 900 × 900 | listo |
+| `07-acompanamiento.jpg` | Mosaico | 900 × 900 | listo |
 | `08-biblioteca.jpg` | Mosaico | 900 × 900 | listo |
 | `09-preescolar.jpg` | Mosaico | 900 × 900 | listo |
 | `10-deportes.jpg` | Mosaico, celda ancha | 1800 × 900 | listo |
