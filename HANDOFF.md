@@ -6,17 +6,24 @@ Meta única: que el acudiente escriba por WhatsApp.
 
 ## Estado actual, 31 ago 2026
 
-Trabajo hecho en la rama **`humboldt-kids`**, tres commits por encima de `main`:
+Trabajo hecho en la rama **`humboldt-kids`**, por encima de `main`:
 
 ```
-fb17d55  Usa ilustraciones de undraw en Humboldt Kids
-b77d071  Da fondo de marca al hero mientras no exista la foto
-bd6cf46  Añade Humboldt Kids y corrige datos de admisiones
+989a7ea Cambia la foto del pilar de valores
+275e81e Monta las 13 fotos reales del colegio
+87795c5 Pone los valores cristianos como primer pilar
+0cac7c9 Actualiza el costo del formulario a $75.000
+b0f0ffe Acorta el camino al proceso de inscripción
+6b43e95 Apunta el HANDOFF a la preview vigente
+a31a6b2 Actualiza el HANDOFF al estado real del proyecto
+fb17d55 Usa ilustraciones de undraw en Humboldt Kids
+b77d071 Da fondo de marca al hero mientras no exista la foto
+bd6cf46 Añade Humboldt Kids y corrige datos de admisiones
 ```
 
 Árbol limpio. **Nada de esto está en producción todavía.**
 
-- **Preview pública:** https://humboldt-admisiones-aaupva8p4-musiclimpics.vercel.app
+- **Preview pública:** https://humboldt-admisiones-fawl56q0e-musiclimpics.vercel.app
   (cada `vercel --yes` crea una URL nueva; para la vigente, `vercel ls`)
 - **Producción:** https://humboldt-admisiones.vercel.app — sirve la versión vieja de `main`
 - **Repo:** https://github.com/alcolhumboldt-byte/humboldt-admisiones
@@ -148,16 +155,18 @@ Usa ilustraciones de undraw en `ilustraciones/`, ya en el índigo del logo.
 
 ### Bloqueantes para lanzar
 
-1. **Las 14 fotos.** Hoy todas caen a `picsum`, que son fotos de stock de
-   gente ajena al colegio. Buscar `TODO FOTO` en el HTML; las medidas y los
-   nombres exactos están en `fotos/LEEME.md`. **Ninguna puede salir a
-   producción.** Hay autorización de imagen de por medio: son menores.
-2. **FAQ, 2 respuestas:** requisitos de 9°, 10° y 11°, y política de ingreso
+1. **Falta una foto: el salón de música** (`14-salon-musica.jpg`). Las otras
+   13 ya están montadas, recortadas y comprimidas. Ver `fotos/LEEME.md`.
+2. **Autorización de uso de imagen.** Las fotos muestran menores plenamente
+   identificables y ya están en una URL pública. Confirmar con el colegio que
+   existe autorización firmada por los acudientes de cada estudiante que
+   aparece. Es requisito legal, no trámite.
+3. **FAQ, 2 respuestas:** requisitos de 9°, 10° y 11°, y política de ingreso
    a mitad de año. Están marcadas con `[ ... ]` y son visibles en la página.
-3. **Año escolar del hero.** El rótulo dice "Prejardín a grado 11", que
+4. **Año escolar del hero.** El rótulo dice "Prejardín a grado 11", que
    duplica la banda de cifras justo debajo. Se decidió cambiarlo por el año
    ("Año escolar 2027") pero falta confirmar cuál es.
-4. **Fusionar `humboldt-kids` a `main` y desplegar a producción.**
+5. **Fusionar `humboldt-kids` a `main` y desplegar a producción.**
 
 ### Después del lanzamiento
 
