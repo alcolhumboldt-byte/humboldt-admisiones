@@ -21,13 +21,12 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 | `11-juego-libre.jpg` | Mosaico | 900 × 900 | listo |
 | `12-vida-escolar.jpg` | Mosaico | 900 × 900 | listo |
 | `13-sala-multiple.jpg` | Humboldt Kids | 1600 × 1000 | listo |
-| `14-salon-musica.jpg` | Humboldt Kids | 1600 × 1000 | **FALTA** |
+| `14-salon-musica.jpg` | Humboldt Kids | 1600 × 1000 | listo |
 
 Los originales están en `~/Desktop/fotos humboldt/`. Se recortaron al centro
 según la proporción de cada slot y se comprimieron por debajo de 300 KB.
 
-**Falta una sola foto: el salón de música.** Hoy ese hueco muestra una imagen
-de stock. Hace falta una horizontal, con niños tocando instrumentos.
+**Las 14 están montadas.** Ya no hay huecos con imágenes de stock.
 
 Las dos últimas son de la sección Humboldt Kids. Ahí importa más que en
 ninguna otra parte que salgan **niños en actividad**, no el salón vacío:
