@@ -1,10 +1,10 @@
 # Fotos del colegio
 
-Aquí van las 14 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
+Aquí van las 18 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
 
 Mientras un archivo no exista, la página muestra en su lugar una foto de relleno de `picsum.photos`. Apenas dejes el archivo real con el nombre correcto, aparece solo.
 
-## Los 14 archivos
+## Los 18 archivos
 
 | Archivo | Dónde sale | Medida | Estado |
 |---|---|---|---|
@@ -20,13 +20,21 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 | `10-deportes.jpg` | Mosaico, celda ancha | 1800 × 900 | listo |
 | `11-juego-libre.jpg` | Mosaico | 900 × 900 | listo |
 | `12-vida-escolar.jpg` | Mosaico | 900 × 900 | listo |
+| `15-laboratorio.jpg` | Mosaico | 900 × 900 | listo |
+| `16-clase.jpg` | Mosaico | 900 × 900 | listo |
+| `17-parvulos.jpg` | Mosaico | 900 × 900 | listo |
+| `18-piano.jpg` | Mosaico, celda ancha | 900 × 900 | listo |
 | `13-sala-multiple.jpg` | Humboldt Kids | 1600 × 1000 | listo |
 | `14-salon-musica.jpg` | Humboldt Kids | 1600 × 1000 | listo |
 
-Los originales están en `~/Desktop/fotos humboldt/`. Se recortaron al centro
+Los originales están en `~/Desktop/fotos humboldt/` y `~/Desktop/REDES/`. Se recortaron al centro
 según la proporción de cada slot y se comprimieron por debajo de 300 KB.
 
-**Las 14 están montadas.** Ya no hay huecos con imágenes de stock.
+**Las 18 están montadas.** Ya no hay huecos con imágenes de stock.
+
+El mosaico tiene **12 celdas exactas**. Los tramos anchos son la 1 (2x2) y la
+10 (2x1); si cambias el número de fotos hay que recalcularlos o la retícula
+queda con huecos.
 
 Las dos últimas son de la sección Humboldt Kids. Ahí importa más que en
 ninguna otra parte que salgan **niños en actividad**, no el salón vacío:
