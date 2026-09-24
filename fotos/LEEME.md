@@ -1,10 +1,10 @@
 # Fotos del colegio
 
-Aquí van las 18 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
+Aquí van las 22 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
 
 Mientras un archivo no exista, la página muestra en su lugar una foto de relleno de `picsum.photos`. Apenas dejes el archivo real con el nombre correcto, aparece solo.
 
-## Los 18 archivos
+## Los 22 archivos
 
 | Archivo | Dónde sale | Medida | Estado |
 |---|---|---|---|
@@ -24,15 +24,19 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 | `16-clase.jpg` | Mosaico | 900 × 900 | listo |
 | `17-parvulos.jpg` | Mosaico | 900 × 900 | listo |
 | `18-piano.jpg` | Mosaico | 900 × 900 | listo |
+| `19-canchas.jpg` | Mosaico, instalación | 900 × 900 | listo |
+| `20-sala-lectura.jpg` | Mosaico, instalación | 900 × 900 | listo |
+| `21-corredor.jpg` | Mosaico, instalación | 900 × 900 | listo |
+| `22-zona-verde.jpg` | Mosaico, instalación | 900 × 900 | listo |
 | `13-sala-multiple.jpg` | Humboldt Kids | 1600 × 1000 | listo |
 | `14-salon-musica.jpg` | Humboldt Kids | 1600 × 1000 | listo |
 
 Los originales están en `~/Desktop/fotos humboldt/` y `~/Desktop/REDES/`. Se recortaron al centro
 según la proporción de cada slot y se comprimieron por debajo de 300 KB.
 
-**Las 18 están montadas.** Ya no hay huecos con imágenes de stock.
+**Las 22 están montadas.** Ya no hay huecos con imágenes de stock.
 
-El mosaico tiene **12 celdas exactas**. Los tramos anchos son la 1 (2x2) y la
+El mosaico tiene **16 celdas exactas**. Los tramos anchos son la 1 (2x2) y la
 6 (2x1), que es donde va la foto de deportes, la única en 1800x900; si cambias el número de fotos hay que recalcularlos o la retícula
 queda con huecos.
 
@@ -43,6 +47,11 @@ esa sección existe para que un papá imagine a su hijo adentro.
 ## Qué foto sirve y cuál no
 
 La página está construida sobre la fotografía: si las fotos son flojas, no la salva ningún ajuste de diseño.
+
+Las cuatro últimas del mosaico son instalaciones sin gente, a propósito: un
+acudiente que aún no ha visitado quiere ver la planta física. Son el
+complemento, no el grueso. El resto de la galería son estudiantes en
+actividad, y esa proporción no debería invertirse.
 
 - **Gente, no salones vacíos.** Una biblioteca sin nadie es un cuarto con libros. Con tres estudiantes leyendo es el colegio.
 - **Estudiantes haciendo algo**, no posando en fila mirando a la cámara.
