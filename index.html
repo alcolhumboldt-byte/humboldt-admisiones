@@ -430,8 +430,13 @@
      tras un botón.
      La primera ocupa 2x2, así que al colapsar hay que neutralizar ese tramo:
      con el span puesto, cuatro fotos dejan un hueco en la retícula. */
-  .mosaico.colapsada figure:nth-child(n+5){display:none;}
-  .mosaico.colapsada figure:nth-child(1){grid-column:auto;grid-row:auto;aspect-ratio:1/1;}
+  /* Colapsada muestra 8, no 4: las instalaciones van de primeras y el
+     acudiente que no ha visitado el colegio quiere verlas sin pulsar nada.
+     Ocho son dos filas exactas de cuatro columnas; con 6 la segunda fila
+     quedaba coja. Los dos tramos anchos se neutralizan aquí por lo mismo. */
+  .mosaico.colapsada figure:nth-child(n+9){display:none;}
+  .mosaico.colapsada figure:nth-child(1),
+  .mosaico.colapsada figure:nth-child(6){grid-column:auto;grid-row:auto;aspect-ratio:1/1;}
   .mosaico-mas{display:flex;justify-content:center;margin-top:20px;}
   .mosaico img{width:100%;height:100%;object-fit:cover;transition:transform 800ms var(--ease-out);}
   @media (hover: hover) and (pointer: fine){
@@ -445,9 +450,10 @@
     .mosaico{grid-template-columns:repeat(2,1fr);gap:4px;margin-top:44px;}
     .mosaico figure:nth-child(1){grid-column:span 2;grid-row:span 1;aspect-ratio:16/10;}
     .mosaico figure:nth-child(6){grid-column:span 2;aspect-ratio:16/10;}
-    /* En 2 columnas la primera ocupa la fila entera; colapsada vuelve a
-       cuadrada para que las 4 formen un 2x2 parejo. */
-    .mosaico.colapsada figure:nth-child(1){grid-column:auto;aspect-ratio:1/1;}
+    /* En 2 columnas los tramos anchos ocupan la fila entera; colapsada
+       vuelven a cuadrados para que las 8 formen un 2x4 parejo. */
+    .mosaico.colapsada figure:nth-child(1),
+    .mosaico.colapsada figure:nth-child(6){grid-column:auto;aspect-ratio:1/1;}
   }
 
   /* ================= HUMBLE KIDS =================
@@ -1177,21 +1183,21 @@
        visitado: son las fotos que hacen creíble todo lo anterior. -->
   <div class="mosaico colapsada rv" id="mosaico" role="group" aria-label="Instalaciones y vida escolar del colegio">
     <figure><img src="fotos/05-patio-central.jpg" alt="Parque infantil del colegio con rodaderos y zonas de juego" width="1600" height="1600" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/06-sala-computo.jpg" alt="Una docente guía a estudiantes frente a los computadores" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/07-acompanamiento.jpg" alt="Una docente acompaña a dos estudiantes en su puesto de trabajo" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/08-biblioteca.jpg" alt="Un estudiante lee y escribe en la biblioteca del colegio" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/09-preescolar.jpg" alt="Un niño de preescolar saluda desde su salón" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/10-deportes.jpg" alt="Tres estudiantes disputan el balón en la cancha del colegio" width="1800" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/11-juego-libre.jpg" alt="Una niña juega con un balón entre los árboles del colegio" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/12-vida-escolar.jpg" alt="Una estudiante con buzo del colegio camina por la zona verde" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/15-laboratorio.jpg" alt="Dos estudiantes trabajan con reactivos en el laboratorio" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/16-clase.jpg" alt="Estudiantes de primaria atienden en clase" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/17-parvulos.jpg" alt="Niñas de preescolar trabajan en su mesa de actividades" width="900" height="900" loading="lazy" decoding="async"></figure>
-    <figure><img src="fotos/18-piano.jpg" alt="Un estudiante toca el piano frente a sus compañeros" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/19-canchas.jpg" alt="Canchas deportivas del colegio con los bloques de aulas alrededor" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/20-sala-lectura.jpg" alt="Sala de lectura con estantería de libros y mesas de trabajo" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/21-corredor.jpg" alt="Corredor del colegio con columnas de colores" width="900" height="900" loading="lazy" decoding="async"></figure>
     <figure><img src="fotos/22-zona-verde.jpg" alt="Zona verde del colegio con árboles y prado" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/10-deportes.jpg" alt="Tres estudiantes disputan el balón en la cancha del colegio" width="1800" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/06-sala-computo.jpg" alt="Una docente guía a estudiantes frente a los computadores" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/08-biblioteca.jpg" alt="Un estudiante lee y escribe en la biblioteca del colegio" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/15-laboratorio.jpg" alt="Dos estudiantes trabajan con reactivos en el laboratorio" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/16-clase.jpg" alt="Estudiantes de primaria atienden en clase" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/17-parvulos.jpg" alt="Niñas de preescolar trabajan en su mesa de actividades" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/18-piano.jpg" alt="Un estudiante toca el piano frente a sus compañeros" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/07-acompanamiento.jpg" alt="Una docente acompaña a dos estudiantes en su puesto de trabajo" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/09-preescolar.jpg" alt="Un niño de preescolar saluda desde su salón" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/11-juego-libre.jpg" alt="Una niña juega con un balón entre los árboles del colegio" width="900" height="900" loading="lazy" decoding="async"></figure>
+    <figure><img src="fotos/12-vida-escolar.jpg" alt="Una estudiante con buzo del colegio camina por la zona verde" width="900" height="900" loading="lazy" decoding="async"></figure>
   </div>
 
   <div class="wrap mosaico-mas">

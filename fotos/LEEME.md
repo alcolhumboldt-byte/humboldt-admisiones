@@ -36,7 +36,8 @@ según la proporción de cada slot y se comprimieron por debajo de 300 KB.
 
 **Las 22 están montadas.** Ya no hay huecos con imágenes de stock.
 
-El mosaico tiene **16 celdas exactas**. Los tramos anchos son la 1 (2x2) y la
+El mosaico arranca colapsado mostrando **8 de 16**, y las instalaciones van
+de primeras para que se vean sin pulsar el botón. Tiene **16 celdas exactas**. Los tramos anchos son la 1 (2x2) y la
 6 (2x1), que es donde va la foto de deportes, la única en 1800x900; si cambias el número de fotos hay que recalcularlos o la retícula
 queda con huecos.
 
