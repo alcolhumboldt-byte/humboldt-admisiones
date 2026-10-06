@@ -1,10 +1,10 @@
 # Fotos del colegio
 
-Aquí van las 30 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
+Aquí van las 34 fotos de la landing. **Los nombres tienen que ser exactos**: el HTML ya apunta a ellos. No hay que tocar código, solo dejar los archivos en esta carpeta.
 
 Mientras un archivo no exista, la página muestra en su lugar una foto de relleno de `picsum.photos`. Apenas dejes el archivo real con el nombre correcto, aparece solo.
 
-## Los 30 archivos
+## Los 34 archivos
 
 | Archivo | Dónde sale | Medida | Estado |
 |---|---|---|---|
@@ -34,10 +34,10 @@ Mientras un archivo no exista, la página muestra en su lugar una foto de rellen
 Los originales están en `~/Desktop/fotos humboldt/` y `~/Desktop/REDES/`. Se recortaron al centro
 según la proporción de cada slot y se comprimieron por debajo de 300 KB.
 
-**Las 30 están montadas.** Ya no hay huecos con imágenes de stock.
+**Las 34 están montadas.** Ya no hay huecos con imágenes de stock.
 
 El mosaico arranca colapsado mostrando **8 de 16**, y las instalaciones van
-de primeras para que se vean sin pulsar el botón. Tiene **24 celdas exactas**. La rejilla cierra cada 4 celdas: 12, 16, 20, 24. Con otro número queda coja. Los tramos anchos son la 1 (2x2) y la
+de primeras para que se vean sin pulsar el botón. Tiene **28 celdas exactas**. La rejilla cierra cada 4 celdas: 12, 16, 20, 24, 28. Con otro número queda coja. Los tramos anchos son la 1 (2x2) y la
 6 (2x1), que es donde va la foto de deportes, la única en 1800x900; si cambias el número de fotos hay que recalcularlos o la retícula
 queda con huecos.
 
